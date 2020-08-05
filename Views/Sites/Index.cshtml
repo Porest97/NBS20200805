@@ -1,0 +1,65 @@
+﻿@model IEnumerable<NBS.Models.DataModels.Site>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <div class="card card-columns">
+        <div class="card-header text-center">
+            <h6>Sites</h6>
+            <a class="btn btn-sm btn-outline-success" asp-action="Create" asp-controller="Sites">Create New Site</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="Admin" asp-controller="Home">Back to Admin</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoSite)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SiteRole)
+                        </th>                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.SiteType)
+                        </th>                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.Company)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoSite)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SiteRole.SiteRoleName)
+                            </td>                           
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SiteType.SiteTypeName)
+                            </td>                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Company.CompanyName)
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-sm btn-success" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+        </div>
+    </div>

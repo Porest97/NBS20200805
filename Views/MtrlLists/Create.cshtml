@@ -1,0 +1,83 @@
+﻿@model NBS.Models.DataModels.MtrlList
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>MtrlList</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item1" class="control-label"></label>
+                <input asp-for="Item1" class="form-control" />
+                <span asp-validation-for="Item1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item2" class="control-label"></label>
+                <input asp-for="Item2" class="form-control" />
+                <span asp-validation-for="Item2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item3" class="control-label"></label>
+                <input asp-for="Item3" class="form-control" />
+                <span asp-validation-for="Item3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item4" class="control-label"></label>
+                <input asp-for="Item4" class="form-control" />
+                <span asp-validation-for="Item4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item5" class="control-label"></label>
+                <input asp-for="Item5" class="form-control" />
+                <span asp-validation-for="Item5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item6" class="control-label"></label>
+                <input asp-for="Item6" class="form-control" />
+                <span asp-validation-for="Item6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item7" class="control-label"></label>
+                <input asp-for="Item7" class="form-control" />
+                <span asp-validation-for="Item7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item8" class="control-label"></label>
+                <input asp-for="Item8" class="form-control" />
+                <span asp-validation-for="Item8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item9" class="control-label"></label>
+                <input asp-for="Item9" class="form-control" />
+                <span asp-validation-for="Item9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item10" class="control-label"></label>
+                <input asp-for="Item10" class="form-control" />
+                <span asp-validation-for="Item10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

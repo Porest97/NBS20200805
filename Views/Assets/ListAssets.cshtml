@@ -1,0 +1,44 @@
+﻿@model DataViewModel
+@{
+    ViewData["Title"] = "ListAssets";
+}
+<div class="badge">
+    <h1>Assets</h1>
+
+    <a class="btn btn-sm btn-success" asp-controller="Assets" asp-action="Create">Create new Asset</a>
+    <a class="btn btn-sm btn-success" asp-controller="Assets" asp-action="IndexSearch">To Accesspoints - Sitenumber Search</a>
+    <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Admin">Back to Admin</a>
+
+
+
+    <table class="table table-responsive-sm table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Assets[0].Site)</th>
+                <th>@Html.DisplayNameFor(model => model.Assets[0].AssetType)</th>
+                <th>@Html.DisplayNameFor(model => model.Assets[0].AssetStatus)</th>
+                <th>@Html.DisplayNameFor(model => model.Assets[0].Brand)</th>
+                <th>@Html.DisplayNameFor(model => model.Assets[0].Model)</th>
+                <th>@Html.DisplayNameFor(model => model.Assets[0].Name)</th>              
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Assets.OrderBy(a => a.Name))
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Site.NoSite)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AssetType.AssetTypeName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AssetStatus.AssetStatusName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Brand.BrandName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Model)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>                   
+                    <td>
+                        <a class="btn btn-sm btn-success" asp-controller="Assets" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-sm btn-success" asp-controller="Assets" asp-action="Details" asp-route-id="@item.Id">Details</a>                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,143 @@
+﻿@model IEnumerable<NBS.Models.DataModels.Incident>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IncidentPriority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncidentStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncidentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncidentNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Creator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Site)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Received)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Receiver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FEScheduled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FEAssigned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FEEntersSite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FEEExitsSite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IssueResolved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resolution)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MtrlList)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentPriority.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentStatus.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentType.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creator.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Site.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Received)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Receiver.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FEScheduled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FEAssigned.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FEEntersSite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FEEExitsSite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Logg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssueResolved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resolution)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseOrder.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MtrlList.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

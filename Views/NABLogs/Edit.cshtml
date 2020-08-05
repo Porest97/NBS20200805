@@ -1,0 +1,79 @@
+﻿@model NBS.Models.DataModels.NABLog
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>NABLog</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="IncidentId" class="control-label"></label>
+                <select asp-for="IncidentId" class="form-control" asp-items="ViewBag.IncidentId"></select>
+                <span asp-validation-for="IncidentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTimeStarted" class="control-label"></label>
+                <input asp-for="DateTimeStarted" class="form-control" />
+                <span asp-validation-for="DateTimeStarted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTimeEnded" class="control-label"></label>
+                <input asp-for="DateTimeEnded" class="form-control" />
+                <span asp-validation-for="DateTimeEnded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogNotes" class="control-label"></label>
+                <input asp-for="LogNotes" class="form-control" />
+                <span asp-validation-for="LogNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hours" class="control-label"></label>
+                <input asp-for="Hours" class="form-control" />
+                <span asp-validation-for="Hours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceHour" class="control-label"></label>
+                <input asp-for="PriceHour" class="form-control" />
+                <span asp-validation-for="PriceHour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MtrCost" class="control-label"></label>
+                <input asp-for="MtrCost" class="form-control" />
+                <span asp-validation-for="MtrCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalCost" class="control-label"></label>
+                <input asp-for="TotalCost" class="form-control" />
+                <span asp-validation-for="TotalCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WLogId" class="control-label"></label>
+                <select asp-for="WLogId" class="form-control" asp-items="ViewBag.WLogId"></select>
+                <span asp-validation-for="WLogId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NABLogStatusId" class="control-label"></label>
+                <select asp-for="NABLogStatusId" class="form-control" asp-items="ViewBag.NABLogStatusId"></select>
+                <span asp-validation-for="NABLogStatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

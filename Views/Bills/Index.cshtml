@@ -1,0 +1,119 @@
+﻿@model IEnumerable<NBS.Models.DataModels.Bill>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyToBill)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyBilling)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NABLog1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NABLog2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NABLog3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NABLog4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NABLog5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillingTerms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MtrCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyToBill.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyBilling.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NABLog1.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NABLog2.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NABLog3.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NABLog4.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NABLog5.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingTerms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MtrCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillStatus.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
