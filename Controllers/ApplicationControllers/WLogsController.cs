@@ -22,8 +22,77 @@ namespace NBS.Controllers.ApplicationControllers
         // GET: WLogs
         public async Task<IActionResult> Index()
         {
-            var nBSContext = _context.WLog.Include(w => w.Employee).Include(w => w.Incident).Include(w => w.WLogStatus);
+            var nBSContext = _context.WLog
+                .Include(w => w.Employee)
+                .Include(w => w.Incident)
+                .Include(w => w.WLogStatus);
             return View(await nBSContext.ToListAsync());
+        }
+
+        // GET: Incidents - search
+        public async Task<IActionResult> IndexSearch
+            (string searchString, string searchString1,
+            string searchString2, string searchString3,
+            string searchString4, string searchString5)
+        {
+            var wLogs = from w in _context.WLog
+                .Include(w => w.Employee)
+                .Include(w => w.Incident)
+                .Include(w => w.WLogStatus)
+
+                        select w;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                wLogs = wLogs
+                .Include(w => w.Employee)
+                .Include(w => w.Incident)
+                .Include(w => w.WLogStatus)
+                .Where(s => s.Employee.FirstName.Contains(searchString));
+
+            }
+            if (!String.IsNullOrEmpty(searchString1))
+            {
+                wLogs = wLogs
+                .Include(w => w.Employee)
+                .Include(w => w.Incident)
+                .Include(w => w.WLogStatus)
+                .Where(s => s.Employee.LastName.Contains(searchString1));
+            }
+            if (!String.IsNullOrEmpty(searchString2))
+            {
+                wLogs = wLogs
+                .Include(w => w.Employee)
+                .Include(w => w.Incident)
+                .Include(w => w.WLogStatus)
+                .Where(s => s.Incident.IncidentNumber.Contains(searchString2));
+            }
+            if (!String.IsNullOrEmpty(searchString3))
+            {
+                wLogs = wLogs
+               .Include(w => w.Employee)
+               .Include(w => w.Incident)
+               .Include(w => w.WLogStatus)
+               .Where(s => s.WLogStatus.WLogStatusName.Contains(searchString3));
+            }            
+            if (!String.IsNullOrEmpty(searchString4))
+            {
+                wLogs = wLogs
+               .Include(w => w.Employee)
+               .Include(w => w.Incident)
+               .Include(w => w.WLogStatus)
+               .Where(s => s.DateTimeFrom.ToString().Contains(searchString4));
+               
+            }
+            if (!String.IsNullOrEmpty(searchString5))
+            {
+                wLogs = wLogs
+               .Include(w => w.Employee)
+               .Include(w => w.Incident)
+               .Include(w => w.WLogStatus)
+               .Where(s => s.DateTimeTo.ToString().Contains(searchString5));
+            }
+            return View(await wLogs.ToListAsync());
         }
 
         // GET: WLogs/Details/5
@@ -50,9 +119,9 @@ namespace NBS.Controllers.ApplicationControllers
         // GET: WLogs/Create
         public IActionResult Create()
         {
-            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "Id");
-            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "Id");
-            ViewData["WLogStatusId"] = new SelectList(_context.WLogStatus, "Id", "Id");
+            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "IncidentNumber");
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName");
+            ViewData["WLogStatusId"] = new SelectList(_context.WLogStatus, "Id", "WLogStatusName");
             return View();
         }
 
@@ -67,11 +136,11 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 _context.Add(wLog);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexSearch));
             }
-            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "Id", wLog.PersonId);
-            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "Id", wLog.IncidentId);
-            ViewData["WLogStatusId"] = new SelectList(_context.WLogStatus, "Id", "Id", wLog.WLogStatusId);
+            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "IncidentNumber", wLog.IncidentId);
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", wLog.PersonId);
+            ViewData["WLogStatusId"] = new SelectList(_context.WLogStatus, "Id", "WLogStatusName", wLog.WLogStatusId);
             return View(wLog);
         }
 
@@ -88,9 +157,9 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 return NotFound();
             }
-            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "Id", wLog.PersonId);
-            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "Id", wLog.IncidentId);
-            ViewData["WLogStatusId"] = new SelectList(_context.WLogStatus, "Id", "Id", wLog.WLogStatusId);
+            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "IncidentNumber", wLog.IncidentId);
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", wLog.PersonId);
+            ViewData["WLogStatusId"] = new SelectList(_context.WLogStatus, "Id", "WLogStatusName", wLog.WLogStatusId);
             return View(wLog);
         }
 
@@ -124,11 +193,11 @@ namespace NBS.Controllers.ApplicationControllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexSearch));
             }
-            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "Id", wLog.PersonId);
-            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "Id", wLog.IncidentId);
-            ViewData["WLogStatusId"] = new SelectList(_context.WLogStatus, "Id", "Id", wLog.WLogStatusId);
+            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "IncidentNumber", wLog.IncidentId);
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", wLog.PersonId);
+            ViewData["WLogStatusId"] = new SelectList(_context.WLogStatus, "Id", "WLogStatusName", wLog.WLogStatusId);
             return View(wLog);
         }
 
@@ -161,7 +230,7 @@ namespace NBS.Controllers.ApplicationControllers
             var wLog = await _context.WLog.FindAsync(id);
             _context.WLog.Remove(wLog);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexSearch));
         }
 
         private bool WLogExists(int id)

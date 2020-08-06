@@ -22,8 +22,75 @@ namespace NBS.Controllers.ApplicationControllers
         // GET: NABLogs
         public async Task<IActionResult> Index()
         {
-            var nBSContext = _context.NABLog.Include(n => n.Incident).Include(n => n.NABLogStatus).Include(n => n.WLog);
+            var nBSContext = _context.NABLog
+                .Include(n => n.Incident)
+                .Include(n => n.NABLogStatus)
+                .Include(n => n.WLog);
             return View(await nBSContext.ToListAsync());
+        }
+
+        // GET: Incidents - search
+        public async Task<IActionResult> IndexSearch
+            (string searchString, string searchString1,
+            string searchString2, string searchString3,
+            string searchString4)
+        {
+            var nABLogs = from n in _context.NABLog
+                .Include(n => n.Incident)
+                .Include(n => n.NABLogStatus)
+                .Include(n => n.WLog)
+                .Include(n => n.WLog.Employee)
+
+                          select n;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                nABLogs = nABLogs
+                .Include(n => n.Incident)
+                .Include(n => n.NABLogStatus)
+                .Include(n => n.WLog)
+                .Include(n => n.WLog.Employee)
+                .Where(s => s.WLog.Employee.FirstName.Contains(searchString));
+
+            }
+            if (!String.IsNullOrEmpty(searchString1))
+            {
+                nABLogs = nABLogs
+                .Include(n => n.Incident)
+                .Include(n => n.NABLogStatus)
+                .Include(n => n.WLog)
+                .Include(n => n.WLog.Employee)
+                .Where(s => s.WLog.Employee.LastName.Contains(searchString1));
+            }
+            if (!String.IsNullOrEmpty(searchString2))
+            {
+                nABLogs = nABLogs
+                .Include(n => n.Incident)
+                .Include(n => n.NABLogStatus)
+                .Include(n => n.WLog)
+                .Include(n => n.WLog.Employee)
+                .Where(s => s.DateTimeStarted.ToString().Contains(searchString2));
+            }
+            if (!String.IsNullOrEmpty(searchString3))
+            {
+                nABLogs = nABLogs
+                .Include(n => n.Incident)
+                .Include(n => n.NABLogStatus)
+                .Include(n => n.WLog)
+                .Include(n => n.WLog.Employee)
+                .Where(s => s.DateTimeEnded.ToString().Contains(searchString3));
+            }
+            if (!String.IsNullOrEmpty(searchString4))
+            {
+                nABLogs = nABLogs
+                .Include(n => n.Incident)
+                .Include(n => n.NABLogStatus)
+                .Include(n => n.WLog)
+                .Include(n => n.WLog.Employee)
+                .Where(s => s.NABLogStatus.NABLogStatusName.Contains(searchString4));
+
+            }            
+            return View(await nABLogs.ToListAsync());
         }
 
         // GET: NABLogs/Details/5
@@ -50,9 +117,9 @@ namespace NBS.Controllers.ApplicationControllers
         // GET: NABLogs/Create
         public IActionResult Create()
         {
-            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "Id");
-            ViewData["NABLogStatusId"] = new SelectList(_context.NABLogStatus, "Id", "Id");
-            ViewData["WLogId"] = new SelectList(_context.WLog, "Id", "Id");
+            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "IncidentNumber");
+            ViewData["NABLogStatusId"] = new SelectList(_context.Set<NABLogStatus>(), "Id", "NABLogStatusName");
+            ViewData["WLogId"] = new SelectList(_context.WLog, "Id", "WLNumber");
             return View();
         }
 
@@ -65,13 +132,19 @@ namespace NBS.Controllers.ApplicationControllers
         {
             if (ModelState.IsValid)
             {
+                var nBSContext = _context.NABLog
+                   .Include(nl => nl.Incident)
+                   .Include(nl => nl.NABLogStatus)
+                   .Include(nl => nl.WLog);
+                nABLog.TotalCost = (nABLog.Hours * nABLog.PriceHour) + nABLog.MtrCost;
+
                 _context.Add(nABLog);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexSearch));
             }
-            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "Id", nABLog.IncidentId);
-            ViewData["NABLogStatusId"] = new SelectList(_context.NABLogStatus, "Id", "Id", nABLog.NABLogStatusId);
-            ViewData["WLogId"] = new SelectList(_context.WLog, "Id", "Id", nABLog.WLogId);
+            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "IncidentNumber", nABLog.IncidentId);
+            ViewData["NABLogStatusId"] = new SelectList(_context.Set<NABLogStatus>(), "Id", "NABLogStatusName", nABLog.NABLogStatusId);
+            ViewData["WLogId"] = new SelectList(_context.WLog, "Id", "WLNumber", nABLog.WLogId);
             return View(nABLog);
         }
 
@@ -88,9 +161,9 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 return NotFound();
             }
-            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "Id", nABLog.IncidentId);
-            ViewData["NABLogStatusId"] = new SelectList(_context.NABLogStatus, "Id", "Id", nABLog.NABLogStatusId);
-            ViewData["WLogId"] = new SelectList(_context.WLog, "Id", "Id", nABLog.WLogId);
+            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "IncidentNumber", nABLog.IncidentId);
+            ViewData["NABLogStatusId"] = new SelectList(_context.Set<NABLogStatus>(), "Id", "NABLogStatusName", nABLog.NABLogStatusId);
+            ViewData["WLogId"] = new SelectList(_context.WLog, "Id", "WLNumber", nABLog.WLogId);
             return View(nABLog);
         }
 
@@ -110,6 +183,12 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 try
                 {
+                    var nBSContext = _context.NABLog
+                   .Include(nl => nl.Incident)
+                   .Include(nl => nl.NABLogStatus)
+                   .Include(nl => nl.WLog);
+                    nABLog.TotalCost = (nABLog.Hours * nABLog.PriceHour) + nABLog.MtrCost;
+
                     _context.Update(nABLog);
                     await _context.SaveChangesAsync();
                 }
@@ -124,11 +203,11 @@ namespace NBS.Controllers.ApplicationControllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexSearch));
             }
-            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "Id", nABLog.IncidentId);
-            ViewData["NABLogStatusId"] = new SelectList(_context.NABLogStatus, "Id", "Id", nABLog.NABLogStatusId);
-            ViewData["WLogId"] = new SelectList(_context.WLog, "Id", "Id", nABLog.WLogId);
+            ViewData["IncidentId"] = new SelectList(_context.Incident, "Id", "IncidentNumber", nABLog.IncidentId);
+            ViewData["NABLogStatusId"] = new SelectList(_context.Set<NABLogStatus>(), "Id", "NABLogStatusName", nABLog.NABLogStatusId);
+            ViewData["WLogId"] = new SelectList(_context.WLog, "Id", "WLNumber", nABLog.WLogId);
             return View(nABLog);
         }
 
@@ -161,7 +240,7 @@ namespace NBS.Controllers.ApplicationControllers
             var nABLog = await _context.NABLog.FindAsync(id);
             _context.NABLog.Remove(nABLog);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexSearch));
         }
 
         private bool NABLogExists(int id)

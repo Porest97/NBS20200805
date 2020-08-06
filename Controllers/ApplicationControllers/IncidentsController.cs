@@ -254,7 +254,7 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 _context.Add(incident);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexSearch));
             }
             ViewData["MtrlListId"] = new SelectList(_context.Set<MtrlList>(), "Id", "Description", incident.MtrlListId);
             ViewData["PersonId"] = new SelectList(_context.Set<Person>(), "Id", "FullName", incident.PersonId);
@@ -323,7 +323,7 @@ namespace NBS.Controllers.ApplicationControllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexSearch));
             }
             ViewData["MtrlListId"] = new SelectList(_context.Set<MtrlList>(), "Id", "Description", incident.MtrlListId);
             ViewData["PersonId"] = new SelectList(_context.Set<Person>(), "Id", "FullName", incident.PersonId);
@@ -372,7 +372,7 @@ namespace NBS.Controllers.ApplicationControllers
             var incident = await _context.Incident.FindAsync(id);
             _context.Incident.Remove(incident);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexSearch));
         }
 
         private bool IncidentExists(int id)

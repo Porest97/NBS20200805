@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WLog>
+@{
+    ViewData["Title"] = "IndexSearchWLogs";
+}
+
+<div class="card card-columns">
+    <div class="card-header text-center">
+        <div>
+            <h6>WLogs</h6>
+            <h6>Total Hours: @Model.Sum(i => i.Hours)</h6>
+        </div>
+        <div style="padding-bottom: 1em;">
+            <a class="btn btn-sm btn-outline-success" asp-action="Create" asp-controller="WLogs">Register New WLog</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="Reports" asp-controller="Home">Back to Reports</a>
+        </div>
+        <div class="card-group">
+            <form asp-controller="Wlogs" asp-action="IndexSearch">
+                <p>
+                    <input type="text" name="SearchString" value="Firstname">
+                    <input type="text" name="SearchString1" value="Lastname">
+                    from: <input type="text" name="SearchString4" value="2020-05">
+                    to: <input type="text" name="SearchString5" value="2020-05">
+                    <input type="text" name="SearchString3" value="Created">
+                    <input type="submit" value="Search" />
+                </p>
+            </form>            
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-responsive-sm table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.WLNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.Employee)</th>
+                    <th>@Html.DisplayNameFor(model => model.Incident)</th>
+                    <th>@Html.DisplayNameFor(model => model.DateTimeFrom)</th>
+                    <th>@Html.DisplayNameFor(model => model.DateTimeTo)</th>
+                    <th>@Html.DisplayNameFor(model => model.Hours)</th>
+                    <th>@Html.DisplayNameFor(model => model.WLogStatus)</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(w => w.DateTimeFrom))
+                {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.WLNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Employee.FullName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Incident.IncidentNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DateTimeFrom)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DateTimeTo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Hours)</td>
+                    <td>@Html.DisplayFor(modelItem => item.WLogStatus.WLogStatusName)</td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-success" asp-controller="WLogs" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Reports">Back to Reports</a>
+    </div>
+</div>     

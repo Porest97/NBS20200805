@@ -5,10 +5,8 @@
 }
 
 <h1>Details</h1>
-
 <div>
-    <h4>WLog</h4>
-    <hr />
+    <h4>WLog</h4>    
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.WLNumber)
@@ -44,23 +42,23 @@
             @Html.DisplayNameFor(model => model.WLogStatus)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WLogStatus.Id)
+            @Html.DisplayFor(model => model.WLogStatus.WLogStatusName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Incident)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Incident.Id)
+            @Html.DisplayFor(model => model.Incident.IncidentNumber)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Employee)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Employee.Id)
+            @Html.DisplayFor(model => model.Employee.FullName)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>  
+    <a class="btn btn-sm btn-success" asp-controller="WLogs" asp-action="IndexSearch">Back to WLogs</a>    
 </div>

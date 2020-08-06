@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Incident)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Incident.Id)
+            @Html.DisplayFor(model => model.Incident.IncidentNumber)
         </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DateTimeStarted)
@@ -69,13 +69,13 @@
             @Html.DisplayNameFor(model => model.NABLogStatus)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NABLogStatus.Id)
+            @Html.DisplayFor(model => model.NABLogStatus.NABLogStatusName)
         </dd class>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-sm btn-danger" />
+        <a class="btn btn-sm btn-success" asp-controller="NABLogs" asp-action="IndexSearch">Back to NABLogs</a>
     </form>
 </div>
