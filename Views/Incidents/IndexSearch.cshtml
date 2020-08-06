@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Incident>
+@{
+    ViewData["Title"] = "IndexSearchIncidents";
+}
+
+<div class="card card-columns">
+    <div class="card-header text-center">
+        <div>
+            <h6>Incidents</h6>
+        </div>
+        <div style="padding-bottom: 1em;">
+            <a class="btn btn-sm btn-outline-success" asp-action="Create" asp-controller="Incidents">Register New Incident</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="Incidents" asp-controller="Home">Back to Incidents</a>
+        </div>
+        <div>
+            <form asp-controller="Incidents" asp-action="IndexSearch">
+                <p>
+                    @Html.DisplayNameFor(model => model.IncidentNumber): <input type="text" name="SearchString">
+                    Site @Html.DisplayNameFor(model => model.Site.SiteNumber): <input type="text" name="SearchString1">
+                    @Html.DisplayNameFor(model => model.Description): <input type="text" name="SearchString2">
+                    @Html.DisplayNameFor(model => model.IncidentStatus.IncidentStatusName): <input type="text" name="SearchString3">
+                    <input type="submit" value="Search" />
+                </p>
+            </form>
+            <form asp-controller="Incidents" asp-action="IndexSearch">
+                <p>
+                    @Html.DisplayNameFor(model => model.IncidentPriority.IncidentPriorityName): <input type="text" name="SearchString4">
+                    @Html.DisplayNameFor(model => model.IncidentType.IncidentTypeName): <input type="text" name="SearchString5">
+                    @Html.DisplayNameFor(model => model.PurchaseOrder.PONumber): <input type="text" name="SearchString6">
+                    Creator: <input type="text" name="SearchString7">
+                    <input type="submit" value="Search" />
+                </p>
+            </form>
+        </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-responsive-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.IncidentNumber)</th>
+
+
+                        <th>@Html.DisplayNameFor(model => model.Site)</th>
+                        <th>@Html.DisplayNameFor(model => model.Description)</th>
+
+                        <th>@Html.DisplayNameFor(model => model.IncidentPriority)</th>
+                        <th>@Html.DisplayNameFor(model => model.IncidentStatus)</th>
+
+                        <th>@Html.DisplayNameFor(model => model.IncidentType)</th>
+                        <th>@Html.DisplayNameFor(model => model.PurchaseOrder.POHours)</th>
+
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderBy(i => i.Received))
+                    {
+                        <tr>
+                            <td> @Html.DisplayFor(modelItem => item.IncidentNumber)</td>
+
+                            <td> @Html.DisplayFor(modelItem => item.Site.NoSite)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Description)</td>
+
+                            <td>@Html.DisplayFor(modelItem => item.IncidentPriority.IncidentPriorityName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.IncidentStatus.IncidentStatusName)</td>
+
+                            <td>@Html.DisplayFor(modelItem => item.IncidentType.IncidentTypeName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PurchaseOrder.POHours)</td>
+
+
+                            <td>                                
+                                <a class="btn btn-sm btn-outline-success" asp-controller="Incidents" asp-action="DetailsPrint" asp-route-id="@item.Id">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Incidents">Back to Incidents</a>
+        </div>
+    </div>     

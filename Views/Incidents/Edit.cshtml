@@ -1,4 +1,4 @@
-﻿@model NBS.Models.DataModels.Incident
+﻿@model Incident
 
 @{
     ViewData["Title"] = "Edit";
@@ -109,16 +109,54 @@
                 <span asp-validation-for="MtrlListId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-sm btn-primary" />
             </div>
         </form>
+
+        <dl class="row alert-success">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MtrlList)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Description)
+            </dd>
+        </dl>
+        <dl class="alert-success">
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item1)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item2)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item3)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item4)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item5)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item6)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item7)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item8)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item9)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item10)
+            </dd>
+        </dl>
+
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-sm btn-success" asp-controller="Incidents" asp-action="IndexSearch">Back to Incidents</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
