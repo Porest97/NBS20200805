@@ -1,0 +1,61 @@
+﻿@model TimeReport
+
+@{
+    ViewData["Title"] = "DetailsTimeReport";
+}
+<div class="card">
+    <div class="card-header">
+        <h6>TimeReport: @Html.DisplayFor(model => model.TimeReportName) for: @Html.DisplayFor(model => model.Employee.CName)</h6>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TimeReportName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TimeReportName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateTimeCreated)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateTimeCreated)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateTimeFrom)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateTimeFrom)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateTimeTo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateTimeTo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Creator)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Creator.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Employee)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Employee.CName)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="card-footer">
+        <a class="btn btn-sm btn-outline-success" asp-controller="Reports" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-sm btn-outline-success" asp-controller="Reports" asp-action="IndexSearch">To Time Reports</a>
+    </div>
+</div>

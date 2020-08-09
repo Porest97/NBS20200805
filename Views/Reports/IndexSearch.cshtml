@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TimeReport>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+<div class="card">
+    <div class="card-header">
+        <h6>Time Reports ALL - Employee - Search</h6>
+        <p>
+            <a class="btn btn-sm btn-outline-success" asp-controller="Reports" asp-action="CreateTimeReport">Create New Time Report</a>
+            <a class="btn btn-sm btn-outline-success" asp-controller="TimeLogs" asp-action="IndexSearch">To TimeLogs search</a>
+            <a class="btn btn-sm btn-outline-success" asp-controller="Home" asp-action="Reports">Back To Reports</a>
+        </p>        
+        <div class="col-sm-12 text-center">
+            <form asp-controller="TimeReports" asp-action="IndexSearch">
+                <p>
+                    Time report: <input type="text" name="SearchString">
+                    Emloyee Firstname:<input type="text" name="SearchString1">
+                    Emloyee Lastname:<input type="text" name="SearchString2">
+                    <input type="submit" value="Search" />
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-responsive-sm table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.TimeReportName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.DateTimeCreated)</th>
+                    <th>@Html.DisplayNameFor(model => model.DateTimeFrom)</th>
+                    <th>@Html.DisplayNameFor(model => model.DateTimeTo)</th>
+                    <th>@Html.DisplayNameFor(model => model.Creator)</th>
+                    <th>@Html.DisplayNameFor(model => model.Employee)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(t => t.DateTimeFrom))
+                {
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => item.TimeReportName)</td>
+                        <td> @Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DateTimeCreated)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DateTimeFrom)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DateTimeTo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Creator.UserName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Employee.FullName)</td>
+                        <td><a class="btn btn-sm btn-success" asp-controller="Reports" asp-action="DetailsTimeReport" asp-route-id="@item.Id">Details</a></td>
+                        <td><a class="btn btn-sm btn-success" asp-controller="Reports" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">        
+        <a class="btn btn-sm btn-outline-success" asp-controller="Home" asp-action="Reports">Back To Reports</a>
+    </div>
+</div>
