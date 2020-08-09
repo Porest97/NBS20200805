@@ -38,6 +38,13 @@ namespace NBS.Data
         public DbSet<SiteRole> SiteRole { get; set; }
         public DbSet<SiteStatus> SiteStatus { get; set; }
         public DbSet<SiteType> SiteType { get; set; }
+
+        public DbSet<TimeLog> TimeLog { get; set; }
+        public DbSet<TimeLogStatus> TimeLogStatus { get; set; }
+
+        public DbSet<TimeReport> TimeReport { get; set; }
+        public DbSet<TimeReportStatus> TimeReportStatus { get; set; }
+
         public DbSet<WLog> WLog { get; set; }
         public DbSet<WLogStatus> WLogStatus { get; set; }       
         public DbSet<NABLog> NABLog { get; set; }
@@ -53,6 +60,7 @@ namespace NBS.Data
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
-        }       
+        }     
+        
     }
 }

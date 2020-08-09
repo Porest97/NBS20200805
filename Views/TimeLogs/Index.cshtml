@@ -1,0 +1,107 @@
+﻿@model IEnumerable<NBS.Models.DataModels.TimeLog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Creator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incident)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTimeStarted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTimeEnded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MtrCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WLog)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeLogStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSelected)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creator.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Incident.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeStarted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeEnded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MtrCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WLog.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeLogStatus.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSelected)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
