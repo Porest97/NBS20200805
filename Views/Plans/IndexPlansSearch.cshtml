@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Plan>
+
+@{
+    ViewData["Title"] = "IndexPlansSearch";
+}
+    <div class="card card-columns">
+        <div class="card-header text-center">
+            <div>
+                <h6>Plans</h6>
+            </div>
+            <div style="padding-bottom: 1em;">
+                <a class="btn btn-sm btn-outline-success" asp-action="CreatePlan" asp-controller="Plans">Register New Plan</a>
+                <a class="btn btn-sm btn-outline-success" asp-action="Planning" asp-controller="Home">Back to Planning</a>
+            </div>
+            <div>
+                <form asp-controller="Plans" asp-action="IndexPlansSearch">
+                    <p>
+                        @Html.DisplayNameFor(model => model.ApplicationUser.UserName): <input type="text" name="SearchString">
+                        <input type="submit" value="Search" />
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-responsive-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ApplicationUser)</th>
+                        <th>@Html.DisplayNameFor(model => model.Site)</th>
+                        <th>@Html.DisplayNameFor(model => model.PlanName)</th>
+                        <th>@Html.DisplayNameFor(model => model.StartDate)</th>
+                        <th>@Html.DisplayNameFor(model => model.EndDate)</th>
+                        <th>@Html.DisplayNameFor(model => model.Jobs)</th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderBy(p => p.StartDate))
+                    {
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => item.ApplicationUser.UserName)</td>
+                        <td> @Html.DisplayFor(modelItem => item.Site.NoSite)</td>
+                        <td> @Html.DisplayFor(modelItem => item.PlanName)</td>
+                        <td> @Html.DisplayFor(modelItem => item.StartDate)</td>
+                        <td> @Html.DisplayFor(modelItem => item.EndDate)</td>
+                        <td></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Planning">Back to Planning</a>
+        </div>
+    </div>

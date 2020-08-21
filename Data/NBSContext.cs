@@ -26,6 +26,7 @@ namespace NBS.Data
         public DbSet<IncidentPriority> IncidentPriority { get; set; }
         public DbSet<IncidentStatus> IncidentStatus { get; set; }
         public DbSet<IncidentType> IncidentType { get; set; }
+        public DbSet<Job> Jobs { get; set; }
         public DbSet<Offer> Offer { get; set; }
         public DbSet<OfferStatus> OfferStatus { get; set; }
         public DbSet<Person> Person { get; set; }
@@ -33,6 +34,9 @@ namespace NBS.Data
         public DbSet<PersonRole> PersonRole { get; set; }
         public DbSet<PersonStatus> PersonStatus { get; set; }
         public DbSet<PersonType> PersonType { get; set; }
+
+        public DbSet<NBS.Models.DataModels.Plan> Plan { get; set; }
+
         public DbSet<PurchaseOrder> PurchaseOrder { get; set; }
         public DbSet<Site> Site { get; set; }
         public DbSet<SiteRole> SiteRole { get; set; }
@@ -52,6 +56,9 @@ namespace NBS.Data
         public DbSet<MtrlList> MtrlList { get; set; }        
         public DbSet<Bill> Bill { get; set; }
         public DbSet<BillStatus> BillStatus { get; set; }
+        //SallaryAccount and Transaction
+        public DbSet<SallaryAccount> SallaryAccount { get; set; }
+        public DbSet<Transaction> Transaction { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

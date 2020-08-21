@@ -31,7 +31,7 @@ namespace NBS.Controllers.ApplicationControllers
             return View(await nBSContext.ToListAsync());
         }
 
-        // GET: Incidents - search
+        // GET: TimeLogs IndexSearch
         public async Task<IActionResult> IndexSearch
             (string searchString, string searchString1,
             string searchString2, string searchString3,
@@ -102,6 +102,147 @@ namespace NBS.Controllers.ApplicationControllers
             return View(await timeLogs.ToListAsync());
         }
 
+        // GET: TimeLogs IndexSearchPO
+        public async Task<IActionResult> IndexSearchPO
+            (string searchString, string searchString1,
+            string searchString2, string searchString3,
+            string searchString4)
+        {
+            var timeLogs = from t in _context.TimeLog
+                .Include(t => t.Creator)
+                .Include(t => t.Employee)
+                .Include(t => t.Incident)
+                .Include(t => t.TimeLogStatus)
+                .Include(t => t.WLog)
+
+                           select t;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                timeLogs = timeLogs
+                .Include(t => t.Creator)
+                .Include(t => t.Employee)
+                .Include(t => t.Incident)
+                .Include(t => t.TimeLogStatus)
+                .Include(t => t.WLog)
+                .Where(s => s.Employee.FirstName.Contains(searchString));
+
+            }
+            if (!String.IsNullOrEmpty(searchString1))
+            {
+                timeLogs = timeLogs
+               .Include(t => t.Creator)
+               .Include(t => t.Employee)
+               .Include(t => t.Incident)
+               .Include(t => t.TimeLogStatus)
+               .Include(t => t.WLog)
+               .Where(s => s.Employee.LastName.Contains(searchString1));
+            }
+            if (!String.IsNullOrEmpty(searchString2))
+            {
+                timeLogs = timeLogs
+               .Include(t => t.Creator)
+               .Include(t => t.Employee)
+               .Include(t => t.Incident)
+               .Include(t => t.TimeLogStatus)
+               .Include(t => t.WLog)
+               .Where(s => s.DateTimeStarted.ToString().Contains(searchString2));
+            }
+            if (!String.IsNullOrEmpty(searchString3))
+            {
+                timeLogs = timeLogs
+               .Include(t => t.Creator)
+               .Include(t => t.Employee)
+               .Include(t => t.Incident)
+               .Include(t => t.TimeLogStatus)
+               .Include(t => t.WLog)
+               .Where(s => s.DateTimeEnded.ToString().Contains(searchString3));
+            }
+            if (!String.IsNullOrEmpty(searchString4))
+            {
+                timeLogs = timeLogs
+               .Include(t => t.Creator)
+               .Include(t => t.Employee)
+               .Include(t => t.Incident)
+               .Include(t => t.TimeLogStatus)
+               .Include(t => t.WLog)
+               .Where(s => s.TimeLogStatus.TimeLogStatusName.Contains(searchString4));
+            }
+
+
+            return View(await timeLogs.ToListAsync());
+        }
+
+        // GET: TimeLogs IndexSearchJM
+        public async Task<IActionResult> IndexSearchJM
+            (string searchString, string searchString1,
+            string searchString2, string searchString3,
+            string searchString4)
+        {
+            var timeLogs = from t in _context.TimeLog
+                .Include(t => t.Creator)
+                .Include(t => t.Employee)
+                .Include(t => t.Incident)
+                .Include(t => t.TimeLogStatus)
+                .Include(t => t.WLog)
+
+                           select t;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                timeLogs = timeLogs
+                .Include(t => t.Creator)
+                .Include(t => t.Employee)
+                .Include(t => t.Incident)
+                .Include(t => t.TimeLogStatus)
+                .Include(t => t.WLog)
+                .Where(s => s.Employee.FirstName.Contains(searchString));
+
+            }
+            if (!String.IsNullOrEmpty(searchString1))
+            {
+                timeLogs = timeLogs
+               .Include(t => t.Creator)
+               .Include(t => t.Employee)
+               .Include(t => t.Incident)
+               .Include(t => t.TimeLogStatus)
+               .Include(t => t.WLog)
+               .Where(s => s.Employee.LastName.Contains(searchString1));
+            }
+            if (!String.IsNullOrEmpty(searchString2))
+            {
+                timeLogs = timeLogs
+               .Include(t => t.Creator)
+               .Include(t => t.Employee)
+               .Include(t => t.Incident)
+               .Include(t => t.TimeLogStatus)
+               .Include(t => t.WLog)
+               .Where(s => s.DateTimeStarted.ToString().Contains(searchString2));
+            }
+            if (!String.IsNullOrEmpty(searchString3))
+            {
+                timeLogs = timeLogs
+               .Include(t => t.Creator)
+               .Include(t => t.Employee)
+               .Include(t => t.Incident)
+               .Include(t => t.TimeLogStatus)
+               .Include(t => t.WLog)
+               .Where(s => s.DateTimeEnded.ToString().Contains(searchString3));
+            }
+            if (!String.IsNullOrEmpty(searchString4))
+            {
+                timeLogs = timeLogs
+               .Include(t => t.Creator)
+               .Include(t => t.Employee)
+               .Include(t => t.Incident)
+               .Include(t => t.TimeLogStatus)
+               .Include(t => t.WLog)
+               .Where(s => s.TimeLogStatus.TimeLogStatusName.Contains(searchString4));
+            }
+
+
+            return View(await timeLogs.ToListAsync());
+        }
 
         // GET: TimeLogs/Details/5
         public async Task<IActionResult> Details(int? id)

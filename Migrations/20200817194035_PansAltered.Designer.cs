@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NBS.Data;
 
 namespace NBS.Migrations
 {
     [DbContext(typeof(NBSContext))]
-    partial class NBSContextModelSnapshot : ModelSnapshot
+    [Migration("20200817194035_PansAltered")]
+    partial class PansAltered
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1049,29 +1051,6 @@ namespace NBS.Migrations
                     b.ToTable("PurchaseOrder");
                 });
 
-            modelBuilder.Entity("NBS.Models.DataModels.SallaryAccount", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("AccountBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("AccountName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("SallaryAccount");
-                });
-
             modelBuilder.Entity("NBS.Models.DataModels.Site", b =>
                 {
                     b.Property<int>("Id")
@@ -1309,29 +1288,6 @@ namespace NBS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TimeReportStatus");
-                });
-
-            modelBuilder.Entity("NBS.Models.DataModels.Transaction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SallaryAccountId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("TransactionAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SallaryAccountId");
-
-                    b.ToTable("Transaction");
                 });
 
             modelBuilder.Entity("NBS.Models.DataModels.WLog", b =>
@@ -1664,15 +1620,6 @@ namespace NBS.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("NBS.Models.DataModels.SallaryAccount", b =>
-                {
-                    b.HasOne("NBS.Models.DataModels.Person", "AccountOwner")
-                        .WithMany()
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("NBS.Models.DataModels.Site", b =>
                 {
                     b.HasOne("NBS.Models.DataModels.Company", "Company")
@@ -1745,15 +1692,6 @@ namespace NBS.Migrations
                         .WithMany()
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("NBS.Models.DataModels.Transaction", b =>
-                {
-                    b.HasOne("NBS.Models.DataModels.SallaryAccount", "SallaryAccount")
-                        .WithMany()
-                        .HasForeignKey("SallaryAccountId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("NBS.Models.DataModels.WLog", b =>

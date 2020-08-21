@@ -18,16 +18,16 @@
                     @Html.DisplayNameFor(model => model.IncidentNumber): <input type="text" name="SearchString">
                     Site @Html.DisplayNameFor(model => model.Site.SiteNumber): <input type="text" name="SearchString1">
                     @Html.DisplayNameFor(model => model.Description): <input type="text" name="SearchString2">
-                    @Html.DisplayNameFor(model => model.IncidentStatus.IncidentStatusName): <input type="text" name="SearchString3">
+                    @Html.DisplayNameFor(model => model.IncidentStatus.IncidentStatusName): <input type="text" name="SearchString3" value="Scheduled">
                     <input type="submit" value="Search" />
                 </p>
             </form>
             <form asp-controller="Incidents" asp-action="IndexSearch">
                 <p>
-                    @Html.DisplayNameFor(model => model.IncidentPriority.IncidentPriorityName): <input type="text" name="SearchString4">
+                    @Html.DisplayNameFor(model => model.IncidentPriority.IncidentPriorityName): <input type="text" name="SearchString4" value="P1">
                     @Html.DisplayNameFor(model => model.IncidentType.IncidentTypeName): <input type="text" name="SearchString5">
-                    @Html.DisplayNameFor(model => model.PurchaseOrder.PONumber): <input type="text" name="SearchString6">
-                    Creator: <input type="text" name="SearchString7">
+                    @Html.DisplayNameFor(model => model.IncidentStatus): <input type="text" name="SearchString6">
+                    @Html.DisplayNameFor(model => model.FEAssigned):<input type="text" name="SearchString7">
                     <input type="submit" value="Search" />
                 </p>
             </form>
@@ -54,7 +54,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Where(i => i.IncidentStatusId < 4).OrderBy(i => i.Received))
+                    @foreach (var item in Model.Where(i => i.IncidentStatusId < 4).OrderByDescending(i => i.Created).ThenBy(i => i.IncidentPriority))
                     {
                         <tr>
                             <td> @Html.DisplayFor(modelItem => item.IncidentNumber)</td>

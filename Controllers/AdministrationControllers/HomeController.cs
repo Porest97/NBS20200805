@@ -29,6 +29,10 @@ namespace NBS.Controllers.AdministrationControllers
         {
             return View();
         }
+        public IActionResult Planning()
+        {
+            return View();
+        }
 
         public IActionResult Reports()
         {

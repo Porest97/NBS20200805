@@ -153,7 +153,7 @@ namespace NBS.Controllers.ApplicationControllers
                 .Include(i => i.Receiver)
                 .Include(i => i.Site)
                 .Include(i => i.MtrlList)
-                .Where(s => s.PurchaseOrder.PONumber.Contains(searchString6));
+                .Where(s => s.IncidentStatus.IncidentStatusName.Contains(searchString6));
             }
             if (!String.IsNullOrEmpty(searchString7))
             {
@@ -167,7 +167,7 @@ namespace NBS.Controllers.ApplicationControllers
                 .Include(i => i.Receiver)
                 .Include(i => i.Site)
                 .Include(i => i.MtrlList)
-                .Where(s => s.Creator.FirstName.Contains(searchString7));
+                .Where(s => s.FEAssigned.LastName.Contains(searchString7));
             }
 
             return View(await incidents.ToListAsync());
