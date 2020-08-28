@@ -11,6 +11,9 @@ namespace NBS.Models.DataModels
     {
         public int Id { get; set; }
 
+        [Display(Name = "Date&Time")]        
+        public DateTime TransactionDate { get; set; }
+
         [Display(Name = "Account")]
         public int SallaryAccountId { get; set; }
         [Display(Name = "Account")]

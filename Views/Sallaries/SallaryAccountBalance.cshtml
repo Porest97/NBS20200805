@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Transaction>
+@{
+    ViewData["Title"] = "SallaryAccountBalance";
+}
+
+<div class="card card-columns">
+    <div class="card-header text-center">
+        <div>
+            <h6>Sallary Account Balance</h6>
+            <h6>Balance : @Model.Sum(n => n.TransactionAmount)</h6>            
+        </div>
+        <div style="padding-bottom: 1em;">
+            <a class="btn btn-sm btn-outline-success" asp-action="Create" asp-controller="TimeLogs">Register New TimeLog</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="Reports" asp-controller="Home">Back to Reports</a>
+        </div>
+        <div class="card-group">
+            <form asp-controller="Sallaries" asp-action="SallaryAccountBalance">
+                <p>
+                    <input type="text" name="SearchString">
+                   
+                    <input type="submit" value="Search Account" />
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-responsive-sm table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.SallaryAccount)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionAmount)</th>                   
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(n => n.SallaryAccount.AccountName))
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.SallaryAccount.AccountName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionAmount)</td>
+                        
+                        <td>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="TimeLogs" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="TimeLogs" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="IndexSallaries">Back to Sallaries</a>
+    </div>
+</div>     

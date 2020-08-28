@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Transaction>
+
+@{
+    ViewData["Title"] = "IndexTransactions";
+}
+
+<h1>Transactions</h1>
+
+<p>
+    <a asp-action="CreateTransaction">Create New Transaction</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SallaryAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionAmount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SallaryAccount.AccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionAmount)
+            </td>
+            <td>
+                @*<a asp-action="EditSallaryAccount" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="DetailsSallaryAccount" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="DeleteSallaryAccount" asp-route-id="@item.Id">Delete</a>*@
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

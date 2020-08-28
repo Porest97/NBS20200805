@@ -24,6 +24,34 @@ namespace NBS.Controllers.ApplicationControllers
             return View();
         }
 
+
+        // GET: Transactions
+        public async Task<IActionResult> IndexTransactions()
+        {           
+            var nBSContext = _context.Transaction
+                .Include(t => t.SallaryAccount);
+            return View(await nBSContext.ToListAsync());
+        }
+
+
+        // GET: SallaryAccountBalance
+        public async Task<IActionResult> SallaryAccountBalance(string searchString)
+        {
+            var transactions = from t in _context.Transaction
+                .Include(t => t.SallaryAccount)
+
+                               select t;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                transactions = transactions
+                .Include(t => t.SallaryAccount)
+                .Where(s => s.SallaryAccount.AccountName.Contains(searchString));
+            }
+
+            return View(await transactions.ToListAsync());
+
+        }
+
         // GET: Sallaries
         public async Task<IActionResult> IndexSallaryAccounts()
         {
@@ -31,8 +59,31 @@ namespace NBS.Controllers.ApplicationControllers
                 .Include(s => s.AccountOwner);
             return View(await nBSContext.ToListAsync());
         }
+        // GET: transaction/Create
+        public IActionResult CreateTransaction()
+        {
+            ViewData["SallaryAccountId"] = new SelectList(_context.SallaryAccount, "Id", "AccountName");
+            return View();
+        }
 
-        // GET: Sallaries/Details/5
+        // POST: Transaction/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateTransaction([Bind("Id,SallaryAccountId,Description,TransactionAmount,TransactionDate")] Transaction transaction)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(transaction);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(IndexTransactions));
+            }
+            ViewData["SallaryAccountId"] = new SelectList(_context.SallaryAccount, "Id", "AccountName", transaction.SallaryAccountId);
+            return View(transaction);
+        }
+
+        // GET: SallaryAccount/Details/5
         public async Task<IActionResult> DetailsSallaryAccount(int? id)
         {
             if (id == null)
@@ -161,6 +212,10 @@ namespace NBS.Controllers.ApplicationControllers
         private bool SallaryAccountExists(int id)
         {
             return _context.SallaryAccount.Any(e => e.Id == id);
+        }
+        private bool TransactionExists(int id)
+        {
+            return _context.Transaction.Any(e => e.Id == id);
         }
     }
 }
