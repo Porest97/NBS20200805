@@ -59,6 +59,17 @@ namespace NBS.Data
         //SallaryAccount and Transaction
         public DbSet<SallaryAccount> SallaryAccount { get; set; }
         public DbSet<Transaction> Transaction { get; set; }
+
+        public DbSet<AgendaPost> AgendaPost { get; set; }
+
+        public DbSet<TimBanksPost> TimBanksPost { get; set; }
+
+        public DbSet<TBPStatus> TBPStatus { get; set; }
+
+        public DbSet<BillingPost> BillingPost { get; set; }
+
+        public DbSet<BPStatus> BPStatus { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

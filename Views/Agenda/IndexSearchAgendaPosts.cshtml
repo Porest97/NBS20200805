@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AgendaPost>
+
+@{
+    ViewData["Title"] = "IndexSearchAgendaPosts";
+}
+<div class="card">
+    <div class="card-header text-center">
+        <h6>Agenda poster alla !</h6>
+        <a class="btn btn-sm btn-outline-success" asp-controller="Agenda" asp-action="CreateAgendaPost">Create New AgendaPost</a>
+    </div>
+    <div class="card-header text-center">
+        <form asp-controller="Agenda" asp-action="IndexSearchAgendaPosts">
+            <p>
+                @Html.DisplayNameFor(model => model.Creator) : <input type="text" name="SearchString">
+                Datum : <input type="text" name="SearchString1">
+                <input type="submit" value="Search" />
+            </p>
+        </form>
+
+
+
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DateAndTime)</th>
+                    <th>@Html.DisplayNameFor(model => model.Creator)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(a => a.DateAndTime))
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.DateAndTime)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Creator.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Agenda" asp-action="EditAgendaPost" asp-route-id="@item.Id">Edit Post</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Agenda" asp-action="DetailsAgendaPost" asp-route-id="@item.Id">Details</a>
+                            @*<a class="btn btn-sm btn-danger" asp-controller="Agenda" asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <h6>Vi kan ännu inte ta bort poster bara välja att söka ut de poster för respektive och vilket datum ;) </h6>
+    </div>
+</div>

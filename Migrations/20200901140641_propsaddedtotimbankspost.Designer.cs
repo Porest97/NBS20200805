@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NBS.Data;
 
 namespace NBS.Migrations
 {
     [DbContext(typeof(NBSContext))]
-    partial class NBSContextModelSnapshot : ModelSnapshot
+    [Migration("20200901140641_propsaddedtotimbankspost")]
+    partial class propsaddedtotimbankspost
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -342,21 +344,6 @@ namespace NBS.Migrations
                     b.ToTable("AssetType");
                 });
 
-            modelBuilder.Entity("NBS.Models.DataModels.BPStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BPStatusName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BPStatus");
-                });
-
             modelBuilder.Entity("NBS.Models.DataModels.Bill", b =>
                 {
                     b.Property<int>("Id")
@@ -443,58 +430,6 @@ namespace NBS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BillStatus");
-                });
-
-            modelBuilder.Entity("NBS.Models.DataModels.BillingPost", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("BPStatusId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Customer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("Ended")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Hours")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Incident")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Outlay")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("PersonId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime?>("Started")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("WLNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BPStatusId");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("BillingPost");
                 });
 
             modelBuilder.Entity("NBS.Models.DataModels.Brand", b =>
@@ -1673,19 +1608,6 @@ namespace NBS.Migrations
                     b.HasOne("NBS.Models.DataModels.NABLog", "NABLog5")
                         .WithMany()
                         .HasForeignKey("NABLogId4")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("NBS.Models.DataModels.BillingPost", b =>
-                {
-                    b.HasOne("NBS.Models.DataModels.BPStatus", "BPStatus")
-                        .WithMany()
-                        .HasForeignKey("BPStatusId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("NBS.Models.DataModels.Person", "Employee")
-                        .WithMany()
-                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

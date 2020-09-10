@@ -1,0 +1,86 @@
+﻿@model IEnumerable<TimBanksPost>
+
+@{
+    ViewData["Title"] = "IndexSearchTimBanksPosts";
+}
+
+<div class="card card-columns col-md-12 text-center">
+    <div class="card-header col-md-12 text-center">
+        <div>
+            <h6>Timbanks poster betalda !</h6>
+            <h6>Total Hours: @Model.Sum(t => t.Hours)</h6>
+            <h6>Total Sallary: @Model.Sum(t => t.Total)</h6>
+        </div>
+        <div style="padding-bottom: 1em;">
+            <a class="btn btn-sm btn-outline-success" asp-action="CreateTimBanksPost" asp-controller="Accounting">Register New TimBanksPost</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchTimBanksPosts" asp-controller="Accounting">Till TimBanksPoster</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="Reports" asp-controller="Home">Back to Reports</a>
+        </div>
+        <div class="card-header col-md-12 text-center">
+            <form asp-controller="Accounting" asp-action="IndexSearchTimBanksPostsPaid">
+                <div class="card-header">
+                    Kund: <input type="text" name="SearchString5">
+                    Förnamn:<input type="text" name="SearchString">
+                    Efternamn:<input type="text" name="SearchString1">
+                </div>
+                <div class="card-header col-md-12 text-center">
+                    Startad: <input type="text" name="SearchString2">
+                    Avslutad: <input type="text" name="SearchString3">
+                    Status: <input type="text" name="SearchString4">
+                </div>
+                <div class="card-header col-md-12 text-center">
+                    <input type="submit" value="Search" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="card-body col-md-12 text-center">
+        <table class="table table-responsive-sm table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Employee)</th>
+                    <th>@Html.DisplayNameFor(model => model.Customer)</th>
+                    <th>@Html.DisplayNameFor(model => model.Incident)</th>
+                    <th>@Html.DisplayNameFor(model => model.Started)</th>
+                    @*<th>@Html.DisplayNameFor(model => model.Ended)</th>*@
+                    <th>@Html.DisplayNameFor(model => model.Hours)</th>
+                    @*<th>@Html.DisplayNameFor(model => model.Price)</th>*@
+                    <th>@Html.DisplayNameFor(model => model.Outlay)</th>
+                    <th>@Html.DisplayNameFor(model => model.Total)</th>
+                    <th>@Html.DisplayNameFor(model => model.Notes)</th>
+                    <th>@Html.DisplayNameFor(model => model.WLNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.TBPStatus)</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(t => t.Ended).Where(t => t.TBPStatusId == 4))
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Employee.FirstName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Customer)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Incident)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Started)</td>
+                        @*<td>@Html.DisplayFor(modelItem => item.Ended)</td>*@
+                        <td>@Html.DisplayFor(modelItem => item.Hours)</td>
+                        @*<td>@Html.DisplayFor(modelItem => item.Price)</td>*@
+                        <td>@Html.DisplayFor(modelItem => item.Outlay)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Total)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Notes)</td>
+                        <td>@Html.DisplayFor(modelItem => item.WLNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TBPStatus.TBPStatusName)</td>
+                        <td>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditTimbanksPost" asp-route-id="@item.Id">Ändra Värden</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditTimBanksPostStatus" asp-route-id="@item.Id">Ändra Status</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer col-md-12">
+        <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Reports">Back to Reports</a>
+    </div>
+</div>
