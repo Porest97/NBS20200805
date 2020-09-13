@@ -1,24 +1,24 @@
 ﻿@model IEnumerable<BillingPost>
 
 @{
-    ViewData["Title"] = "IndexSearchBillingPosts";
+    ViewData["Title"] = "IndexSearchBillingPostsReported";
 }
 
 <div class="card card-columns col-md-12 text-center">
     <div class="card-header col-md-12 text-center">
         <div>
-            <h6>Fakturerings poster schemalagda och avslutade !</h6>
+            <h6>Fakturerings poster rapporterade och färdiga för fakturering !</h6>
             <h6>Totala Timmar: @Model.Sum(t => t.Hours)</h6>
             <h6>Totalt Belopp: @Model.Sum(t => t.Total)</h6>
         </div>
         <div style="padding-bottom: 1em;">
             <a class="btn btn-sm btn-outline-success" asp-action="CreateBillingPost" asp-controller="Accounting">Registrera ny Faktureringpost</a>
-            <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchBillingPostsReported" asp-controller="Accounting">Faktureringsposter Raporterade (Reporter)</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchBillingPosts" asp-controller="Accounting">Till Faktureringsposter</a>
             <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchBillingPostsBilled" asp-controller="Accounting">Till Faktureringsposter Fakturerade (Billed)</a>
             <a class="btn btn-sm btn-outline-success" asp-action="Billing" asp-controller="Home">Till Faktureringen</a>
         </div>
         <div class="card-header col-md-12 text-center">
-            <form asp-controller="Accounting" asp-action="IndexSearchBillingPosts">
+            <form asp-controller="Accounting" asp-action="IndexSearchBillingPostsReported">
                 <div class="card-header">
                     Kund: <input type="text" name="SearchString5">
                     Förnamn:<input type="text" name="SearchString">
@@ -27,7 +27,7 @@
                 <div class="card-header col-md-12 text-center">
                     Startad: <input type="text" name="SearchString2">
                     Avslutad: <input type="text" name="SearchString3">
-                    Status: <input type="text" name="SearchString4" value="Scheduled">
+                    Status: <input type="text" name="SearchString4" value="Reported">
                 </div>
                 <div class="card-header col-md-12 text-center">
                     <input type="submit" value="Search" />
@@ -57,7 +57,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.OrderBy(t => t.Ended).Where(t => t.BPStatusId < 3))
+                @foreach (var item in Model.OrderBy(t => t.Ended).Where(t => t.BPStatusId == 3))
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Employee.FirstName)</td>
