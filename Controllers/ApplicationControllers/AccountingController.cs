@@ -145,11 +145,7 @@ namespace NBS.Controllers.ApplicationControllers
             return View(await timBanksPosts.ToListAsync());
         }
 
-        //// GET: AccountingController/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
+        
 
         // GET: TimBanksPosts/CreateTimBanksPost        
         public IActionResult CreateTimBanksPost()
@@ -305,26 +301,7 @@ namespace NBS.Controllers.ApplicationControllers
             return View(timBanksPost);
         }
 
-        //// GET: AccountingController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: AccountingController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        
 
         /// <summary>
         /// BillingPosts => Is a post that We use for billing customers
@@ -370,7 +347,7 @@ namespace NBS.Controllers.ApplicationControllers
         {
             var billingPosts = from t in _context.BillingPost
                 .Include(t => t.Employee)
-                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 4)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 3)
 
                                 select t;
 
@@ -378,7 +355,7 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
-                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 4)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 3)
                 .Where(s => s.Employee.FirstName.Contains(searchString));
 
             }
@@ -386,7 +363,7 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
-                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 4)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 3)
                 .Where(s => s.Employee.LastName.Contains(searchString1));
 
             }
@@ -394,7 +371,7 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
-                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 4)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 3)
                 .Where(s => s.Started.ToString().Contains(searchString2));
 
             }
@@ -402,7 +379,7 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
-                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 4)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 3)
                 .Where(s => s.Ended.ToString().Contains(searchString3));
 
             }
@@ -410,7 +387,7 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
-                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 4)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 3)
                 .Where(s => s.BPStatus.BPStatusName.Contains(searchString4));
 
             }
@@ -418,7 +395,7 @@ namespace NBS.Controllers.ApplicationControllers
             {
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
-                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 4)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId < 3)
                 .Where(s => s.Customer.Contains(searchString5));
 
             }

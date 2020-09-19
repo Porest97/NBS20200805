@@ -60,6 +60,8 @@ namespace NBS.Data
         public DbSet<SallaryAccount> SallaryAccount { get; set; }
         public DbSet<Transaction> Transaction { get; set; }
 
+        public DbSet<TBPTransaction> TBPTransaction { get; set; }
+
         public DbSet<AgendaPost> AgendaPost { get; set; }
 
         public DbSet<TimBanksPost> TimBanksPost { get; set; }

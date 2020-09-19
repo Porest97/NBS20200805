@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TBPTransaction>
+
+@{
+    ViewData["Title"] = "SallaryAccountBalance196409181135PO";
+}
+
+<div class="card col-md-12 text-center">
+    <div class="card-header col-md-12 text-center">
+        <div>
+            <h6>Saldot för Lönekonto : 196409181135PO</h6>
+            <h6>Antal Timmar: @Model.Sum(t => t.Hours)</h6>
+            <h6>Konto balans: @Model.Sum(t => t.TransactionAmount)</h6>
+        </div>
+        <div style="padding-bottom: 1em;">
+            <a class="btn btn-sm btn-outline-success" asp-action="CreateTBPTransaction" asp-controller="Sallary">Lägg till Transaktion</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchSallaries" asp-controller="Sallary">Till Löne ADM</a>
+            @*<a class="btn btn-sm btn-outline-success" asp-action="Reports" asp-controller="Home">Back to Reports</a>*@
+        </div>
+        @*<div class="card-header col-md-12 text-center">
+            <form asp-controller="Sallary" asp-action="SallaryAccountBalance196409181135PO">
+                <div class="card-header">
+                    Löne konto: <input type="text" name="SearchString" value="196409181135PO">
+                </div>
+                <div class="card-header col-md-12 text-center">
+                    <input type="submit" value="Sök" />
+                </div>
+
+            </form>
+        </div>*@
+    </div>
+    <div class="card-body col-md-12 text-center">
+        <table class="table table-responsive-md col-md-12 table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.SallaryAccount)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.Hours)</th>
+                    <th>@Html.DisplayNameFor(model => model.Price)</th>
+                    <th>@Html.DisplayNameFor(model => model.TransactionAmount)</th>
+
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(t => t.TransactionDate))
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.SallaryAccount.AccountName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Hours)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionAmount)</td>
+
+                        <td>
+                            @*<a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditTimbanksPost" asp-route-id="@item.Id">Ändra Värden</a>
+                                <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditTimBanksPostStatus" asp-route-id="@item.Id">Ändra Status</a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer col-md-12">
+        <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchSallaries" asp-controller="Sallary">Till Löne ADM</a>
+    </div>
+</div>
