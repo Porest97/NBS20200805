@@ -146,6 +146,18 @@ namespace NBS.Controllers.ApplicationControllers
 
             return View(await tBPTransactions.ToListAsync());
         }
+        // GET:  SallaryAccountBalance199204184130JM - Search for Balance in a SallaryAccount
+        public async Task<IActionResult> SallaryAccountBalance199204184130JM(string searchString)
+        {
+            var tBPTransactions = from t in _context.TBPTransaction
+                .Include(t => t.SallaryAccount).Where(t => t.SallaryAccountId == 7)
+
+                                  select t;
+
+            return View(await tBPTransactions.ToListAsync());
+        }
+
+
 
 
         public IActionResult IndexSearchSallaries()
