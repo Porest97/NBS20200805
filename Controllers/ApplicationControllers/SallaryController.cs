@@ -120,6 +120,11 @@ namespace NBS.Controllers.ApplicationControllers
         {
             if (ModelState.IsValid)
             {
+                var nBSContext = _context.TBPTransaction
+                    .Include(t => t.SallaryAccount);
+
+                tBPTransaction.TransactionAmount = tBPTransaction.Hours * tBPTransaction.Price;
+
                 _context.Add(tBPTransaction);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexSearchTBPTransactions));
