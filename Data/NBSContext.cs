@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using NBS.ImageUpload.Models;
 using NBS.Models.DataModels;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,8 @@ namespace NBS.Data
         public DbSet<BillingPost> BillingPost { get; set; }
 
         public DbSet<BPStatus> BPStatus { get; set; }
+
+        public DbSet<ImageModel> Images { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

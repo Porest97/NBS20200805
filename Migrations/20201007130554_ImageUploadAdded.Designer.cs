@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NBS.Data;
 
 namespace NBS.Migrations
 {
     [DbContext(typeof(NBSContext))]
-    partial class NBSContextModelSnapshot : ModelSnapshot
+    [Migration("20201007130554_ImageUploadAdded")]
+    partial class ImageUploadAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,15 +162,10 @@ namespace NBS.Migrations
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("IncidentId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ImageId");
-
-                    b.HasIndex("IncidentId");
 
                     b.ToTable("Images");
                 });
@@ -1655,14 +1652,6 @@ namespace NBS.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("NBS.ImageUpload.Models.ImageModel", b =>
-                {
-                    b.HasOne("NBS.Models.DataModels.Incident", "Incident")
-                        .WithMany()
-                        .HasForeignKey("IncidentId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("NBS.Models.DataModels.AgendaPost", b =>

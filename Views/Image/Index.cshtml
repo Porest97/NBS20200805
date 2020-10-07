@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ImageModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="badge">
+        <h6>Bilder knutna till Incidenter</h6>
+
+        <p>
+            <a class="btn btn-sm btn-outline-success" asp-controller="Image" asp-action="Create">Upload new Image !</a>
+        </p>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImageName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Incident)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Incident.IncidentNumber)
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-success" asp-controller="Image" asp-action="Edit" asp-route-id="@item.ImageId">Edit</a>
+                        <a class="btn btn-sm btn-success" asp-controller="Image" asp-action="Details" asp-route-id="@item.ImageId">Details</a>
+                        <a class="btn btn-sm btn-danger" asp-controller="Image" asp-action="Delete" asp-route-id="@item.ImageId">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>

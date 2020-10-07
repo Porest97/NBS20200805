@@ -42,6 +42,7 @@
 
                         <th>@Html.DisplayNameFor(model => model.Site)</th>
                         <th>@Html.DisplayNameFor(model => model.Description)</th>
+                        <th>@Html.DisplayNameFor(model => model.FEAssigned)</th>
 
                         <th>@Html.DisplayNameFor(model => model.IncidentPriority)</th>
                         <th>@Html.DisplayNameFor(model => model.IncidentStatus)</th>
@@ -54,25 +55,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Where(i => i.IncidentStatusId < 4).OrderByDescending(i => i.Created).ThenBy(i => i.IncidentPriority))
+                    @foreach (var item in Model.Where(i => i.IncidentStatusId < 4).OrderBy(i => i.FEScheduled).ThenBy(i => i.IncidentPriority))
                     {
-                        <tr>
-                            <td> @Html.DisplayFor(modelItem => item.IncidentNumber)</td>
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => item.IncidentNumber)</td>
 
-                            <td> @Html.DisplayFor(modelItem => item.Site.NoSite)</td>
-                            <td> @Html.DisplayFor(modelItem => item.Description)</td>
+                        <td> @Html.DisplayFor(modelItem => item.Site.NoSite)</td>
+                        <td> @Html.DisplayFor(modelItem => item.Description)</td>
+                        <td> @Html.DisplayFor(modelItem => item.FEAssigned.FullName)</td>
 
-                            <td>@Html.DisplayFor(modelItem => item.IncidentPriority.IncidentPriorityName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.IncidentStatus.IncidentStatusName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IncidentPriority.IncidentPriorityName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IncidentStatus.IncidentStatusName)</td>
 
-                            <td>@Html.DisplayFor(modelItem => item.IncidentType.IncidentTypeName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.PurchaseOrder.POHours)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IncidentType.IncidentTypeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PurchaseOrder.POHours)</td>
 
 
-                            <td>                                
-                                <a class="btn btn-sm btn-outline-success" asp-controller="Incidents" asp-action="DetailsPrint" asp-route-id="@item.Id">Details</a>
-                            </td>
-                        </tr>
+                        <td>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Incidents" asp-action="DetailsPrint" asp-route-id="@item.Id">Details</a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
