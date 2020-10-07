@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -30,6 +30,14 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Image\Create.cshtml" />
+    <None Include="Views\Image\Delete.cshtml" />
+    <None Include="Views\Image\Details.cshtml" />
+    <None Include="Views\Image\Edit.cshtml" />
+    <None Include="Views\Image\Index.cshtml" />
   </ItemGroup>
 
 </Project>
