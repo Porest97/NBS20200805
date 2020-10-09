@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ImagesIncidentViewModel>
+@{
+    ViewData["Title"] = "ListIncidentImages";
+}
+
+<div class="card card-columns">
+    <div class="card-header text-center">
+        <div style="padding-bottom: 1em;">
+            <a class="btn btn-sm btn-outline-success" asp-action="Create" asp-controller="Image">Ladda upp ny bild</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="Reports" asp-controller="Home">Till Reports</a>
+        </div>        
+    </div>
+    <div class="card-body">
+        <table class="table table-responsive-sm table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Images[0].ImageName)</th>                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Images[0].ImageName)</td>                        
+                        <td>
+                            <a class="btn btn-sm btn-success" asp-controller="Image" asp-action="Details" asp-route-id="@item.Images[0].ImageId">Details</a>                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Reports">Till Reports</a>
+    </div>
+</div>     

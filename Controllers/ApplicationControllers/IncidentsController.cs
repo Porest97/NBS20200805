@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NBS.Data;
+using NBS.ImageUpload.ViewModels;
 using NBS.Models.DataModels;
 
 namespace NBS.Controllers.ApplicationControllers
@@ -33,6 +34,16 @@ namespace NBS.Controllers.ApplicationControllers
                 .Include(i => i.Receiver)
                 .Include(i => i.Site);
             return View(await nBSContext.ToListAsync());
+        }
+        public IActionResult ListIncidentImages()
+        {
+            var imagesIncidentViewModel = new ImagesIncidentViewModel()
+            {
+                Images = (List<ImageUpload.Models.ImageModel>)_context.Images
+                .Include(i => i.Incident)
+                .Where(i => i.IncidentId == i.Incident.Id)
+            };
+            return View(imagesIncidentViewModel);
         }
 
         // GET: Incidents - search
