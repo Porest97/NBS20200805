@@ -9,6 +9,8 @@ namespace NBS.ImageUpload.ViewModels
 {
     public class ImagesIncidentViewModel
     {
+        public Incident Incident { get; set; }
+
         public List<ImageModel> Images { get; internal set; }
 
         public List<Incident> Incidents { get; internal set; }

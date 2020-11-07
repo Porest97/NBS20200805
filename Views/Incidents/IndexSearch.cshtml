@@ -55,7 +55,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Where(i => i.IncidentStatusId < 4).OrderBy(i => i.FEScheduled).ThenBy(i => i.IncidentPriority))
+                    @foreach (var item in Model.Where(i => i.IncidentStatusId < 4).OrderBy(i => i.FEScheduled).ToList())
                     {
                     <tr>
                         <td> @Html.DisplayFor(modelItem => item.IncidentNumber)</td>

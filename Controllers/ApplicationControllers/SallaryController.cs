@@ -141,16 +141,36 @@ namespace NBS.Controllers.ApplicationControllers
 
                                   select t;
 
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    tBPTransactions = tBPTransactions
-            //    .Include(t => t.SallaryAccount).Where(t => t.SallaryAccountId == 1)
-            //    .Where(s => s.SallaryAccount.AccountName.Contains(searchString));
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                tBPTransactions = tBPTransactions
+                .Include(t => t.SallaryAccount).Where(t => t.SallaryAccountId == 1)
+                .Where(s => s.TransactionDate.ToString().Contains(searchString));
 
-            //}
+            }
 
             return View(await tBPTransactions.ToListAsync());
         }
+
+        // GET:  SallaryAccountBalance196409181135POCash - Search for Balance in a SallaryAccount
+        public async Task<IActionResult> SallaryAccountBalance196409181135POCash(string searchString)
+        {
+            var tBPTransactions = from t in _context.TBPTransaction
+                .Include(t => t.SallaryAccount).Where(t => t.SallaryAccountId == 10)
+
+                                  select t;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                tBPTransactions = tBPTransactions
+                .Include(t => t.SallaryAccount).Where(t => t.SallaryAccountId == 10)
+                .Where(s => s.TransactionDate.ToString().Contains(searchString));
+
+            }
+
+            return View(await tBPTransactions.ToListAsync());
+        }
+
         // GET:  SallaryAccountBalance199204184130JM - Search for Balance in a SallaryAccount
         public async Task<IActionResult> SallaryAccountBalance199204184130JM(string searchString)
         {
@@ -158,6 +178,13 @@ namespace NBS.Controllers.ApplicationControllers
                 .Include(t => t.SallaryAccount).Where(t => t.SallaryAccountId == 7)
 
                                   select t;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                tBPTransactions = tBPTransactions
+                .Include(t => t.SallaryAccount).Where(t => t.SallaryAccountId == 7)
+                 .Where(s => s.TransactionDate.ToString().Contains(searchString));
+
+            }
 
             return View(await tBPTransactions.ToListAsync());
         }

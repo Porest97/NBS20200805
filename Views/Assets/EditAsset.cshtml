@@ -1,0 +1,97 @@
+﻿@model NBS.Models.DataModels.Asset
+
+@{
+    ViewData["Title"] = "EditAsset";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h6>
+            Asset: @Html.DisplayFor(model => model.Site.NoSite)
+            - @Html.DisplayFor(model => model.Name)
+            - @Html.DisplayFor(model => model.SerialNumber)
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="EditAsset">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="SiteId" class="control-label"></label>
+                        <select asp-for="SiteId" class="form-control" asp-items="ViewBag.SiteId"></select>
+                        <span asp-validation-for="SiteId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AssetStatusId" class="control-label"></label>
+                        <select asp-for="AssetStatusId" class="form-control" asp-items="ViewBag.AssetStatusId"></select>
+                        <span asp-validation-for="AssetStatusId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AssetTypeId" class="control-label"></label>
+                        <select asp-for="AssetTypeId" class="form-control" asp-items="ViewBag.AssetTypeId"></select>
+                        <span asp-validation-for="AssetTypeId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BrandId" class="control-label"></label>
+                        <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+                        <span asp-validation-for="BrandId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MACAddress" class="control-label"></label>
+                        <input asp-for="MACAddress" class="form-control" />
+                        <span asp-validation-for="MACAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Model" class="control-label"></label>
+                        <input asp-for="Model" class="form-control" />
+                        <span asp-validation-for="Model" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SerialNumber" class="control-label"></label>
+                        <input asp-for="SerialNumber" class="form-control" />
+                        <span asp-validation-for="SerialNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Connectivity" class="control-label"></label>
+                        <input asp-for="Connectivity" class="form-control" />
+                        <span asp-validation-for="Connectivity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LocalIP" class="control-label"></label>
+                        <input asp-for="LocalIP" class="form-control" />
+                        <span asp-validation-for="LocalIP" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ethernet1LLDP" class="control-label"></label>
+                        <input asp-for="Ethernet1LLDP" class="form-control" />
+                        <span asp-validation-for="Ethernet1LLDP" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ethernet1" class="control-label"></label>
+                        <input asp-for="Ethernet1" class="form-control" />
+                        <span asp-validation-for="Ethernet1" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RFConnectedDevs" class="control-label"></label>
+                        <input asp-for="RFConnectedDevs" class="form-control" />
+                        <span asp-validation-for="RFConnectedDevs" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-sm btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <a class="btn btn-sm btn-success" asp-controller="Assets" asp-action="ListAssets">Back to Assets</a>
+    </div>
+</div>

@@ -1,15 +1,15 @@
-﻿using System;
+﻿using NBS.Models.DataModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NBS.Models.DataModels
+namespace NBS.Models.ViewModels
 {
-    public class Asset
+    public class SaltoAPViewModel
     {
-        public int Id { get; set; }
 
         //Asset Location
         [Display(Name = "Site")]
@@ -60,25 +60,5 @@ namespace NBS.Models.DataModels
 
         [Display(Name = "Ethernet1")]
         public string Ethernet1 { get; set; }
-
-        [Display(Name = "RF Con. Devs")]
-        public string RFConnectedDevs { get; set; }
-
-    }
-
-    public class AssetStatus
-    {
-        public int Id { get; set; }
-
-        [Display(Name = "Status")]
-        public string AssetStatusName { get; set; }
-    }
-
-    public class AssetType
-    {
-        public int Id { get; set; }
-
-        [Display(Name = "Type")]
-        public string AssetTypeName { get; set; }
     }
 }

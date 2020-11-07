@@ -21,7 +21,81 @@ namespace NBS.Controllers.ApplicationControllers
             _context = context;
         }
 
+        // GET: WLogs
+        public async Task<IActionResult> IndexWLogs()
+        {
+            var nBSContext = _context.WLog
+                .Include(w => w.Employee)
+                .Include(w => w.Incident)
+                .Include(w => w.WLogStatus);
+            return View(await nBSContext.ToListAsync());
+        }
 
+        // GET: WLogs - search
+        public async Task<IActionResult> IndexSearchWLogsCompleted
+            (string searchString, string searchString1,
+            string searchString2, string searchString3,
+            string searchString4, string searchString5)
+        {
+            var wLogs = from w in _context.WLog
+                .Include(w => w.Employee)
+                .Include(w => w.Incident)
+                .Include(w => w.WLogStatus)
+
+                        select w;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                wLogs = wLogs
+                .Include(w => w.Employee)
+                .Include(w => w.Incident)
+                .Include(w => w.WLogStatus)
+                .Where(s => s.Employee.FirstName.Contains(searchString));
+
+            }
+            if (!String.IsNullOrEmpty(searchString1))
+            {
+                wLogs = wLogs
+                .Include(w => w.Employee)
+                .Include(w => w.Incident)
+                .Include(w => w.WLogStatus)
+                .Where(s => s.Employee.LastName.Contains(searchString1));
+            }
+            if (!String.IsNullOrEmpty(searchString2))
+            {
+                wLogs = wLogs
+                .Include(w => w.Employee)
+                .Include(w => w.Incident)
+                .Include(w => w.WLogStatus)
+                .Where(s => s.Incident.IncidentNumber.Contains(searchString2));
+            }
+            if (!String.IsNullOrEmpty(searchString3))
+            {
+                wLogs = wLogs
+               .Include(w => w.Employee)
+               .Include(w => w.Incident)
+               .Include(w => w.WLogStatus)
+               .Where(s => s.WLogStatus.WLogStatusName.Contains(searchString3));
+            }
+            if (!String.IsNullOrEmpty(searchString4))
+            {
+                wLogs = wLogs
+               .Include(w => w.Employee)
+               .Include(w => w.Incident)
+               .Include(w => w.WLogStatus)
+               .Where(s => s.DateTimeFrom.ToString().Contains(searchString4));
+
+            }
+            if (!String.IsNullOrEmpty(searchString5))
+            {
+                wLogs = wLogs
+               .Include(w => w.Employee)
+               .Include(w => w.Incident)
+               .Include(w => w.WLogStatus)
+               .Where(s => s.DateTimeTo.ToString().Contains(searchString5));
+            }
+            return View(await wLogs.ToListAsync());
+        }
 
         // GET: TimBanksPosts - search
         public async Task<IActionResult> IndexSearchTimBanksPosts
@@ -317,7 +391,7 @@ namespace NBS.Controllers.ApplicationControllers
             return View();
         }
 
-        // POST: TimeLogs/Create
+        // POST: BillingPost/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -372,7 +446,7 @@ namespace NBS.Controllers.ApplicationControllers
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
                 .Include(t => t.BPStatus).Where(t => t.BPStatusId < 3)
-                .Where(s => s.Started.ToString().Contains(searchString2));
+                .Where(s => s.Incident.Contains(searchString2));
 
             }
             if (!String.IsNullOrEmpty(searchString3))
@@ -462,6 +536,67 @@ namespace NBS.Controllers.ApplicationControllers
             return View(await billingPosts.ToListAsync());
         }
 
+        // GET: BillingPostsReportedProjekt - Search
+        public async Task<IActionResult> BillingPostsReportedProjekt
+        (string searchString, string searchString1, string searchString2, string searchString3, string searchString4, string searchString5)
+        {
+            var billingPosts = from t in _context.BillingPost
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 7)
+
+                               select t;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 7)
+                .Where(s => s.Employee.FirstName.Contains(searchString));
+
+            }
+            if (!String.IsNullOrEmpty(searchString1))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 7)
+                .Where(s => s.Employee.LastName.Contains(searchString1));
+
+            }
+            if (!String.IsNullOrEmpty(searchString2))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 7)
+                .Where(s => s.Started.ToString().Contains(searchString2));
+
+            }
+            if (!String.IsNullOrEmpty(searchString3))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 7)
+                .Where(s => s.Ended.ToString().Contains(searchString3));
+
+            }
+            if (!String.IsNullOrEmpty(searchString4))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 7)
+                .Where(s => s.BPStatus.BPStatusName.Contains(searchString4));
+
+            }
+            if (!String.IsNullOrEmpty(searchString5))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 7)
+                .Where(s => s.Incident.Contains(searchString5));
+
+            }
+            return View(await billingPosts.ToListAsync());
+        }
+
         // GET: BillingPostsBilled - search
         public async Task<IActionResult> IndexSearchBillingPostsBilled
         (string searchString, string searchString1, string searchString2, string searchString3, string searchString4, string searchString5)
@@ -518,6 +653,67 @@ namespace NBS.Controllers.ApplicationControllers
                 .Include(t => t.Employee)
                 .Include(t => t.BPStatus).Where(t => t.BPStatusId == 4)
                 .Where(s => s.Customer.Contains(searchString5));
+
+            }
+            return View(await billingPosts.ToListAsync());
+        }
+
+        // GET: BillingPostsBilledProjekt - search
+        public async Task<IActionResult> BillingPostsBilledProjekt
+        (string searchString, string searchString1, string searchString2, string searchString3, string searchString4, string searchString5)
+        {
+            var billingPosts = from t in _context.BillingPost
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 8)
+
+                               select t;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 8)
+                .Where(s => s.Employee.FirstName.Contains(searchString));
+
+            }
+            if (!String.IsNullOrEmpty(searchString1))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 8)
+                .Where(s => s.Employee.LastName.Contains(searchString1));
+
+            }
+            if (!String.IsNullOrEmpty(searchString2))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 8)
+                .Where(s => s.Started.ToString().Contains(searchString2));
+
+            }
+            if (!String.IsNullOrEmpty(searchString3))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 8)
+                .Where(s => s.Ended.ToString().Contains(searchString3));
+
+            }
+            if (!String.IsNullOrEmpty(searchString4))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 8)
+                .Where(s => s.BPStatus.BPStatusName.Contains(searchString4));
+
+            }
+            if (!String.IsNullOrEmpty(searchString5))
+            {
+                billingPosts = billingPosts
+                .Include(t => t.Employee)
+                .Include(t => t.BPStatus).Where(t => t.BPStatusId == 8)
+                .Where(s => s.Incident.Contains(searchString5));
 
             }
             return View(await billingPosts.ToListAsync());

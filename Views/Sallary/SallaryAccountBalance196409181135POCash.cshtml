@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<TBPTransaction>
 
 @{
-    ViewData["Title"] = "SallaryAccountBalance196409181135PO";
+    ViewData["Title"] = "SallaryAccountBalance196409181135PO-Cashaccount";
 }
 
 <div class="card col-md-12 text-center">
     <div class="card-header col-md-12 text-center">
         <div>
-            <h6>Saldot för Lönekonto : 196409181135PO</h6>
+            <h6>Saldot för Cashkonto : 196409181135PO-CA</h6>
             <h6>Antal Timmar: @Model.Sum(t => t.Hours)</h6>
             <h6>Konto balans: @Model.Sum(t => t.TransactionAmount)</h6>
         </div>
@@ -17,17 +17,16 @@
             <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchSallaries" asp-controller="Sallary">Till Löne ADM</a>
             @*<a class="btn btn-sm btn-outline-success" asp-action="Reports" asp-controller="Home">Back to Reports</a>*@
         </div>
-        @*<div class="card-header col-md-12 text-center">
-            <form asp-controller="Sallary" asp-action="SallaryAccountBalance196409181135PO">
+        <div class="card-header col-md-12 text-center">
+            <form asp-controller="Sallary" asp-action="SallaryAccountBalance196409181135POCash">
                 <div class="card-header">
-                    Löne konto: <input type="text" name="SearchString" value="196409181135PO">
+                    Transaktions datum : <input type="text" name="SearchString" value="2020-01">
                 </div>
                 <div class="card-header col-md-12 text-center">
                     <input type="submit" value="Sök" />
                 </div>
-
             </form>
-        </div>*@
+        </div>
     </div>
     <div class="card-body col-md-12 text-center">
         <table class="table table-responsive-md col-md-12 table-striped">

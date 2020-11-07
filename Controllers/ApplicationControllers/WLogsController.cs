@@ -29,7 +29,7 @@ namespace NBS.Controllers.ApplicationControllers
             return View(await nBSContext.ToListAsync());
         }
 
-        // GET: Incidents - search
+        // GET: WLogs - search
         public async Task<IActionResult> IndexSearch
             (string searchString, string searchString1,
             string searchString2, string searchString3,
@@ -94,6 +94,8 @@ namespace NBS.Controllers.ApplicationControllers
             }
             return View(await wLogs.ToListAsync());
         }
+
+        
 
         // GET: WLogs/Details/5
         public async Task<IActionResult> Details(int? id)
