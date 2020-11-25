@@ -1,0 +1,144 @@
+﻿@model SiteSurvey
+@using NBS.ImageUpload.Models
+@{
+    ViewData["Title"] = "DetailsSiteSurvey";
+}
+
+<div class="card">
+    <div class="card-header">
+        @Html.DisplayNameFor(model => model.SiteSurveyNumber): @Html.DisplayFor(model => model.SiteSurveyNumber) -
+        @Html.DisplayFor(model => model.Description) -
+        @Html.DisplayFor(model => model.Scheduled) -
+        Skapad: @Html.DisplayNameFor(model => model.Created) Av: @Html.DisplayFor(model => model.Creator.FullName)
+        Status:  @Html.DisplayFor(model => model.SiteSurveyStatus.SiteSurveyStatusName)
+    </div>
+    <div class="card-header">
+        @Html.DisplayNameFor(model => model.Incident): @Html.DisplayFor(model => model.Incident.IncidentNumber)        
+    </div>
+    <div class="card-boody col-md-12">
+        <div class="card-header">
+            @Html.DisplayFor(model => model.FloorOneDescription)
+
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel1.Title)
+                <img src="@("~/Image/"+Model.ImageModel1.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel2.Title)
+                <img src="@("~/Image/"+Model.ImageModel2.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel3.Title)
+                <img src="@("~/Image/"+Model.ImageModel3.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel4.Title)
+                <img src="@("~/Image/"+Model.ImageModel4.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel5.Title)
+                <img src="@("~/Image/"+Model.ImageModel5.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+        </div>
+        <div class="card-header">
+            @Html.DisplayFor(model => model.FloorTwoDescription)
+
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel6.Title)
+                <img src="@("~/Image/"+Model.ImageModel6.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel7.Title)
+                <img src="@("~/Image/"+Model.ImageModel7.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel8.Title)
+                <img src="@("~/Image/"+Model.ImageModel8.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel9.Title)
+                <img src="@("~/Image/"+Model.ImageModel9.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel10.Title)
+                <img src="@("~/Image/"+Model.ImageModel10.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+        </div>
+        <div class="card-header">
+            @Html.DisplayFor(model => model.FloorThreeDescription)
+
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel11.Title)
+                <img src="@("~/Image/"+Model.ImageModel11.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel12.Title)
+                <img src="@("~/Image/"+Model.ImageModel12.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel13.Title)
+                <img src="@("~/Image/"+Model.ImageModel13.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel14.Title)
+                <img src="@("~/Image/"+Model.ImageModel14.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel15.Title)
+                <img src="@("~/Image/"+Model.ImageModel15.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+        </div>
+        <div class="card-header">
+            @Html.DisplayFor(model => model.FloorFourDescription)
+
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel16.Title)
+                <img src="@("~/Image/"+Model.ImageModel16.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel17.Title)
+                <img src="@("~/Image/"+Model.ImageModel17.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel18.Title)
+                <img src="@("~/Image/"+Model.ImageModel18.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel19.Title)
+                <img src="@("~/Image/"+Model.ImageModel19.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel20.Title)
+                <img src="@("~/Image/"+Model.ImageModel20.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+        </div>
+        <div class="card-header">
+            @Html.DisplayFor(model => model.FloorFiveDescription)
+
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel21.Title)
+                <img src="@("~/Image/"+Model.ImageModel21.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel22.Title)
+                <img src="@("~/Image/"+Model.ImageModel22.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel23.Title)
+                <img src="@("~/Image/"+Model.ImageModel23.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel24.Title)
+                <img src="@("~/Image/"+Model.ImageModel24.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+            <div class="card-body text-center col-md-12">
+                @Html.DisplayFor(model => model.ImageModel25.Title)
+                <img src="@("~/Image/"+Model.ImageModel25.ImageName)" asp-append-version="true" width="100%" height="100%" />
+            </div>
+        </div>
+    </div>   
+    <div class="card-footer">
+        <a class="btn btn-sm btn-outline-success" asp-action="EditSiteSurvey" asp-route-id="@Model.Id">Ändra</a>
+        <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchSiteSurveys">Till Site Surveys !</a>
+    </div>
+</div>

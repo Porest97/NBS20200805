@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SiteSurvey>
+
+@{
+    ViewData["Title"] = "IndexSearchSiteSurveys";
+}
+<div class="card">
+    <div class="card-header text-center">
+        <h6>Site Surveys alla !</h6>
+        <a class="btn btn-sm btn-outline-success" asp-controller="Surveys" asp-action="CreateSiteSurvey">Skapa ny SiteSurvey</a>
+    </div>
+    <div class="card-header text-center">
+        <form asp-controller="Surveys" asp-action="IndexSearchSiteSurveys">
+            <p>
+               Skapare : <input type="text" name="SearchString">
+               INC# : <input type="text" name="SearchString1">
+               Status : <input type="text" name="SearchString2">
+               Site : <input type="text" name="SearchString3">
+                <input type="submit" value="Search" />
+            </p>
+        </form>
+
+
+
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Creator)</th>
+                    <th>@Html.DisplayNameFor(model => model.Incident)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.Incident.Site)</th>
+                    <th>@Html.DisplayNameFor(model => model.SiteSurveyStatus)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(s => s.Scheduled))
+                {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Creator.FullName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Incident.IncidentNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Incident.Site.NoSite)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SiteSurveyStatus.SiteSurveyStatusName)</td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-success" asp-controller="Surveys" asp-action="EditSiteSurvey" asp-route-id="@item.Id">Ändra</a>
+                        <a class="btn btn-sm btn-outline-success" asp-controller="Surveys" asp-action="DetailsSiteSurvey" asp-route-id="@item.Id">Detaljer</a>
+                        @*<a class="btn btn-sm btn-danger" asp-controller="Agenda" asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <h6>Listar alla Site Surveys här och dessa kan vi bygga i efterhand efter det att vi laddat upp bilderna ;)</h6>
+    </div>
+</div>

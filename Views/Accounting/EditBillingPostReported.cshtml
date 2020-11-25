@@ -1,0 +1,75 @@
+﻿@model BillingPost
+
+@{
+    ViewData["Title"] = "EditBillingPostReported";
+}
+
+<div class="card col-md-6 text-center">
+    <div class="card-body text-center col-md-12">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <form asp-action="EditBillingPostReported" class="col-md-12 text-center">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Customer" class="control-label"></label>
+                        <input asp-for="Customer" class="form-control" />
+                        <span asp-validation-for="Customer" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Incident" class="control-label"></label>
+                        <input asp-for="Incident" class="form-control" />
+                        <span asp-validation-for="Incident" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Started" class="control-label"></label>
+                        <input asp-for="Started" class="form-control" />
+                        <span asp-validation-for="Started" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ended" class="control-label"></label>
+                        <input asp-for="Ended" class="form-control" />
+                        <span asp-validation-for="Ended" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Hours" class="control-label"></label>
+                        <input asp-for="Hours" class="form-control" />
+                        <span asp-validation-for="Hours" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Total" />
+                    <div class="form-group">
+                        <label asp-for="Outlay" class="control-label"></label>
+                        <input asp-for="Outlay" class="form-control" />
+                        <span asp-validation-for="Outlay" class="text-danger"></span>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="PersonId" />                    
+                    <div class="form-group">
+                        <label asp-for="Notes" class="control-label"></label>
+                        <input asp-for="Notes" class="form-control" />
+                        <span asp-validation-for="Notes" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="WLNumber" class="control-label"></label>
+                        <input asp-for="WLNumber" class="form-control" />
+                        <span asp-validation-for="WLNumber" class="text-danger"></span>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="BPStatusId" />
+                    <div class="form-group">
+                        <input type="submit" value="Spara" class="btn btn-sm btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer col-md-12">
+        <a class="btn btn-sm btn-success" asp-controller="Accounting" asp-action="IndexSearchBillingPostsReported">Till Fakturaposter (Repporterade)</a>
+    </div>
+</div>

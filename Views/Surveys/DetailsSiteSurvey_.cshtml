@@ -1,0 +1,259 @@
+﻿@model SiteSurvey
+@using NBS.ImageUpload.Models
+@{
+    ViewData["Title"] = "DetailsSiteSurvey";
+}
+
+<h1>DetailsSiteSurvey</h1>
+
+<div>
+    <h4>SiteSurvey</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SiteSurveyNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SiteSurveyNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Scheduled)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Scheduled)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Started)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Started)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ended)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ended)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Creator)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Creator.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Incident)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Incident.IncidentNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FloorOneDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FloorOneDescription)
+        </dd>
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageModel1)
+        </dt>*@
+        <div class="card-header">            
+                <dd class="col-sm-10">                    
+                    @Html.DisplayFor(model => model.ImageModel1.Title)
+                    
+                    <div class="card-body">
+                        <img src="@("~/Image/"+Model.ImageModel1.ImageName)" asp-append-version="true" width="50%" height="50%" />
+                    </div>
+                </dd>
+         </div>
+        </div>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel2)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel2.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel3)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel3.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel4)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel4.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel5)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel5.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FloorTwoDescription)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FloorTwoDescription)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel6)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel6.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel7)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel7.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel8)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel8.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel9)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel9.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel10)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel10.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FloorThreeDescription)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FloorThreeDescription)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel11)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel11.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel12)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel12.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel13)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel13.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel14)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel14.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel15)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel15.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FloorFourDescription)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FloorFourDescription)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel16)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel16.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel17)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel17.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel18)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel18.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel19)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel19.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel20)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel20.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FloorFiveDescription)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FloorFiveDescription)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel21)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel21.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel22)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel22.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel23)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel23.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel24)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel24.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageModel25)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageModel25.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SiteSurveyStatus)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SiteSurveyStatus.SiteSurveyStatusName)
+            </dd>
+</dl>
+</div>
+<div>
+    <a asp-action="EditSiteSurvey" asp-route-id="@Model.Id">EditSiteSurvey</a> |
+    <a asp-action="IndexSiteSurveys">Back to List</a>
+</div>

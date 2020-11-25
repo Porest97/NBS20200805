@@ -1,0 +1,194 @@
+﻿@model SiteSurvey
+
+@{
+    ViewData["Title"] = "CreateSiteSurvey";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h6>Skapa en ny Site Survey !</h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="CreateSiteSurvey">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="SiteSurveyNumber" class="control-label"></label>
+                        <input asp-for="SiteSurveyNumber" class="form-control" />
+                        <span asp-validation-for="SiteSurveyNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Scheduled" class="control-label"></label>
+                        <input asp-for="Scheduled" class="form-control" />
+                        <span asp-validation-for="Scheduled" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Started" class="control-label"></label>
+                        <input asp-for="Started" class="form-control" />
+                        <span asp-validation-for="Started" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ended" class="control-label"></label>
+                        <input asp-for="Ended" class="form-control" />
+                        <span asp-validation-for="Ended" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Created" class="control-label"></label>
+                        <input asp-for="Created" class="form-control" />
+                        <span asp-validation-for="Created" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ApplicationUserId" class="control-label"></label>
+                        <select asp-for="ApplicationUserId" class="form-control" asp-items="ViewBag.ApplicationUserId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IncidentId" class="control-label"></label>
+                        <select asp-for="IncidentId" class="form-control" asp-items="ViewBag.IncidentId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FloorOneDescription" class="control-label"></label>
+                        <input asp-for="FloorOneDescription" class="form-control" />
+                        <span asp-validation-for="FloorOneDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId" class="control-label"></label>
+                        <select asp-for="ImageModelId" class="form-control" asp-items="ViewBag.ImageModelId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId1" class="control-label"></label>
+                        <select asp-for="ImageModelId1" class="form-control" asp-items="ViewBag.ImageModelId1"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId2" class="control-label"></label>
+                        <select asp-for="ImageModelId2" class="form-control" asp-items="ViewBag.ImageModelId2"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId3" class="control-label"></label>
+                        <select asp-for="ImageModelId3" class="form-control" asp-items="ViewBag.ImageModelId3"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId4" class="control-label"></label>
+                        <select asp-for="ImageModelId4" class="form-control" asp-items="ViewBag.ImageModelId4"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FloorTwoDescription" class="control-label"></label>
+                        <input asp-for="FloorTwoDescription" class="form-control" />
+                        <span asp-validation-for="FloorTwoDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId5" class="control-label"></label>
+                        <select asp-for="ImageModelId5" class="form-control" asp-items="ViewBag.ImageModelId5"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId6" class="control-label"></label>
+                        <select asp-for="ImageModelId6" class="form-control" asp-items="ViewBag.ImageModelId6"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId7" class="control-label"></label>
+                        <select asp-for="ImageModelId7" class="form-control" asp-items="ViewBag.ImageModelId7"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId8" class="control-label"></label>
+                        <select asp-for="ImageModelId8" class="form-control" asp-items="ViewBag.ImageModelId8"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId9" class="control-label"></label>
+                        <select asp-for="ImageModelId9" class="form-control" asp-items="ViewBag.ImageModelId9"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FloorThreeDescription" class="control-label"></label>
+                        <input asp-for="FloorThreeDescription" class="form-control" />
+                        <span asp-validation-for="FloorThreeDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId10" class="control-label"></label>
+                        <select asp-for="ImageModelId10" class="form-control" asp-items="ViewBag.ImageModelId10"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId11" class="control-label"></label>
+                        <select asp-for="ImageModelId11" class="form-control" asp-items="ViewBag.ImageModelId11"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId12" class="control-label"></label>
+                        <select asp-for="ImageModelId12" class="form-control" asp-items="ViewBag.ImageModelId12"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId13" class="control-label"></label>
+                        <select asp-for="ImageModelId13" class="form-control" asp-items="ViewBag.ImageModelId13"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId14" class="control-label"></label>
+                        <select asp-for="ImageModelId14" class="form-control" asp-items="ViewBag.ImageModelId14"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FloorFourDescription" class="control-label"></label>
+                        <input asp-for="FloorFourDescription" class="form-control" />
+                        <span asp-validation-for="FloorFourDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId15" class="control-label"></label>
+                        <select asp-for="ImageModelId15" class="form-control" asp-items="ViewBag.ImageModelId15"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId16" class="control-label"></label>
+                        <select asp-for="ImageModelId16" class="form-control" asp-items="ViewBag.ImageModelId16"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId17" class="control-label"></label>
+                        <select asp-for="ImageModelId17" class="form-control" asp-items="ViewBag.ImageModelId17"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId18" class="control-label"></label>
+                        <select asp-for="ImageModelId18" class="form-control" asp-items="ViewBag.ImageModelId18"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId19" class="control-label"></label>
+                        <select asp-for="ImageModelId19" class="form-control" asp-items="ViewBag.ImageModelId19"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FloorFiveDescription" class="control-label"></label>
+                        <input asp-for="FloorFiveDescription" class="form-control" />
+                        <span asp-validation-for="FloorFiveDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId20" class="control-label"></label>
+                        <select asp-for="ImageModelId20" class="form-control" asp-items="ViewBag.ImageModelId20"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId21" class="control-label"></label>
+                        <select asp-for="ImageModelId21" class="form-control" asp-items="ViewBag.ImageModelId21"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId22" class="control-label"></label>
+                        <select asp-for="ImageModelId22" class="form-control" asp-items="ViewBag.ImageModelId22"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId23" class="control-label"></label>
+                        <select asp-for="ImageModelId23" class="form-control" asp-items="ViewBag.ImageModelId23"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageModelId24" class="control-label"></label>
+                        <select asp-for="ImageModelId24" class="form-control" asp-items="ViewBag.ImageModelId24"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SiteSurveyStatusId" class="control-label"></label>
+                        <select asp-for="SiteSurveyStatusId" class="form-control" asp-items="ViewBag.SiteSurveyStatusId"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchSiteSurveys">Till Site Surveys !</a>
+    </div>
+</div>

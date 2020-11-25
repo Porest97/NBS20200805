@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NBS.Data;
 
 namespace NBS.Migrations
 {
     [DbContext(typeof(NBSContext))]
-    partial class NBSContextModelSnapshot : ModelSnapshot
+    [Migration("20201116201018_SurveysControllerAddedAndSiteSurveys")]
+    partial class SurveysControllerAddedAndSiteSurveys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1165,54 +1167,6 @@ namespace NBS.Migrations
                     b.ToTable("PurchaseOrder");
                 });
 
-            modelBuilder.Entity("NBS.Models.DataModels.RequestPrio", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("RequestPrioDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RequestPrioName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RequestPrios");
-                });
-
-            modelBuilder.Entity("NBS.Models.DataModels.RequestStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("RequestStatusName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RequestStatuses");
-                });
-
-            modelBuilder.Entity("NBS.Models.DataModels.RequestType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("RequestTypeName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RequestTypes");
-                });
-
             modelBuilder.Entity("NBS.Models.DataModels.SallaryAccount", b =>
                 {
                     b.Property<int>("Id")
@@ -1545,63 +1499,6 @@ namespace NBS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SiteType");
-                });
-
-            modelBuilder.Entity("NBS.Models.DataModels.SupportRequest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClientCompany")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientContact")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientPhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientSite")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DateTimePosted")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("RequestDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("RequestPrioId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RequestStatusId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RequestTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SiteArea")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SiteName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SiteNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RequestPrioId");
-
-                    b.HasIndex("RequestStatusId");
-
-                    b.HasIndex("RequestTypeId");
-
-                    b.ToTable("SupportRequests");
                 });
 
             modelBuilder.Entity("NBS.Models.DataModels.TBPStatus", b =>
@@ -2413,24 +2310,6 @@ namespace NBS.Migrations
                     b.HasOne("NBS.Models.DataModels.SiteSurveyStatus", "SiteSurveyStatus")
                         .WithMany()
                         .HasForeignKey("SiteSurveyStatusId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("NBS.Models.DataModels.SupportRequest", b =>
-                {
-                    b.HasOne("NBS.Models.DataModels.RequestPrio", "RequestPrio")
-                        .WithMany()
-                        .HasForeignKey("RequestPrioId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("NBS.Models.DataModels.RequestStatus", "RequestStatus")
-                        .WithMany()
-                        .HasForeignKey("RequestStatusId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("NBS.Models.DataModels.RequestType", "RequestType")
-                        .WithMany()
-                        .HasForeignKey("RequestTypeId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

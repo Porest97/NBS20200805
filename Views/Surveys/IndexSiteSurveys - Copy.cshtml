@@ -1,0 +1,263 @@
+﻿@model IEnumerable<SiteSurvey>
+
+@{
+    ViewData["Title"] = "IndexSiteSurveys";
+}
+
+<h1>IndexSiteSurveys</h1>
+
+<p>
+    <a asp-action="CreateSiteSurvey">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SiteSurveyNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scheduled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Started)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ended)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Creator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incident)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FloorOneDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel1)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ImageModel2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel5)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.FloorTwoDescription)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ImageModel6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel8)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel9)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel10)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.FloorThreeDescription)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ImageModel11)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel12)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel13)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel14)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel15)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.FloorFourDescription)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ImageModel16)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel17)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel18)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel19)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel20)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.FloorFiveDescription)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ImageModel21)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel22)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel23)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel24)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageModel25)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.SiteSurveyStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteSurveyNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Scheduled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Started)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ended)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creator.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Incident.IncidentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FloorOneDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel1.Title)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ImageModel2.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel3.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel4.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel5.ImageId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FloorTwoDescription)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ImageModel6.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel7.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel8.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel9.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel10.ImageId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FloorThreeDescription)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ImageModel11.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel12.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel13.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel14.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel15.ImageId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FloorFourDescription)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ImageModel16.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel17.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel18.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel19.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel20.ImageId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FloorFiveDescription)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ImageModel21.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel22.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel23.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel24.ImageId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageModel25.ImageId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteSurveyStatus.SiteSurveyStatusName)
+            </td>
+            <td>
+                <a asp-action="EditSiteSurvey" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="DetailsSiteSurvey" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="DeleteSiteSurvey" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

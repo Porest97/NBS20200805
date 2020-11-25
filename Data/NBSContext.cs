@@ -75,6 +75,16 @@ namespace NBS.Data
 
         public DbSet<ImageModel> Images { get; set; }
 
+        public DbSet<SupportRequest> SupportRequests { get; set; }
+
+        public DbSet<RequestPrio> RequestPrios { get; set; }
+
+        public DbSet<RequestStatus> RequestStatuses { get; set; }
+
+        public DbSet<RequestType> RequestTypes { get; set; }
+
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -84,6 +94,10 @@ namespace NBS.Data
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
         }     
+
+        public DbSet<NBS.Models.DataModels.Testing> Testing { get; set; }
+
+        public DbSet<NBS.Models.DataModels.SiteSurvey> SiteSurvey { get; set; }
         
     }
 }

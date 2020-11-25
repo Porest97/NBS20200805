@@ -22,7 +22,15 @@ namespace NBS.Controllers.ApplicationControllers
         // GET: Bills
         public async Task<IActionResult> Index()
         {
-            var nBSContext = _context.Bill.Include(b => b.BillStatus).Include(b => b.CompanyBilling).Include(b => b.CompanyToBill).Include(b => b.NABLog1).Include(b => b.NABLog2).Include(b => b.NABLog3).Include(b => b.NABLog4).Include(b => b.NABLog5);
+            var nBSContext = _context.Bill
+                .Include(b => b.BillStatus)
+                .Include(b => b.CompanyBilling)
+                .Include(b => b.CompanyToBill)
+                .Include(b => b.NABLog1)
+                .Include(b => b.NABLog2)
+                .Include(b => b.NABLog3)
+                .Include(b => b.NABLog4)
+                .Include(b => b.NABLog5);
             return View(await nBSContext.ToListAsync());
         }
 

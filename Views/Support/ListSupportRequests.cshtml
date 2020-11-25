@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SupportRequest>
+
+@{
+    ViewData["Title"] = "ListSupportRequests";
+}
+<div class="card">
+    <div class="card-header text-center">
+        <h6>Support förfrågningar alla !</h6>
+        <a class="btn btn-sm btn-outline-success" asp-controller="Support" asp-action="CreateSupportRequest">Skapa ny Support förfrågan</a>
+    </div>
+    @*<div class="card-header text-center">
+        <form asp-controller="Surveys" asp-action="IndexSearchSiteSurveys">
+            <p>
+                Skapare : <input type="text" name="SearchString">
+                INC# : <input type="text" name="SearchString1">
+                Status : <input type="text" name="SearchString2">
+                Site : <input type="text" name="SearchString3">
+                <input type="submit" value="Search" />
+            </p>
+        </form>
+
+
+
+    </div>*@
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.SiteNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.SiteName)</th>
+                    <th>@Html.DisplayNameFor(model => model.RequestDescription)</th>
+                    <th>@Html.DisplayNameFor(model => model.ClientContact)</th>
+                    <th>@Html.DisplayNameFor(model => model.RequestStatus)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBy(s => s.DateTimePosted))
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.SiteNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SiteName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.RequestDescription)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ClientContact)</td>
+                        <td>@Html.DisplayFor(modelItem => item.RequestStatus.RequestStatusName)</td>
+                        <td>
+                            @*<a class="btn btn-sm btn-outline-success" asp-controller="Surveys" asp-action="EditSiteSurvey" asp-route-id="@item.Id">Ändra</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Surveys" asp-action="DetailsSiteSurvey" asp-route-id="@item.Id">Detaljer</a>*@
+                            @*<a class="btn btn-sm btn-danger" asp-controller="Agenda" asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <h6>Listar alla Support förfrågningar här !</h6>
+    </div>
+</div>

@@ -73,8 +73,8 @@
                         <td>@Html.DisplayFor(modelItem => item.WLNumber)</td>
                         <td>@Html.DisplayFor(modelItem => item.BPStatus.BPStatusName)</td>
                         <td>
-                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPost" asp-route-id="@item.Id">Ändra Värden</a>
-                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPostStatus" asp-route-id="@item.Id">Ändra Status</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPostReported" asp-route-id="@item.Id">Ändra Värden</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPostStatusReported" asp-route-id="@item.Id">Ändra Status</a>
                         </td>
                     </tr>
                 }

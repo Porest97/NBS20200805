@@ -25,5 +25,8 @@ namespace NBS.Models.DataModels
         public string City { get; set; }
         [Display(Name = "Country")]
         public string Country { get; set; }
+
+        [Display(Name = "Name")]
+        public string FullName { get { return string.Format("{0} {1} ", FirstName, LastName); } }
     }
 }
