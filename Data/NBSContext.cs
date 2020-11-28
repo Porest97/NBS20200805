@@ -36,7 +36,7 @@ namespace NBS.Data
         public DbSet<PersonStatus> PersonStatus { get; set; }
         public DbSet<PersonType> PersonType { get; set; }
 
-        public DbSet<NBS.Models.DataModels.Plan> Plan { get; set; }
+        public DbSet<Plan> Plan { get; set; }
 
         public DbSet<PurchaseOrder> PurchaseOrder { get; set; }
         public DbSet<Site> Site { get; set; }
@@ -83,6 +83,7 @@ namespace NBS.Data
 
         public DbSet<RequestType> RequestTypes { get; set; }
 
+        public DbSet<Outlay> Outlays { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -95,9 +96,9 @@ namespace NBS.Data
             }
         }     
 
-        public DbSet<NBS.Models.DataModels.Testing> Testing { get; set; }
+        public DbSet<Testing> Testing { get; set; }
 
-        public DbSet<NBS.Models.DataModels.SiteSurvey> SiteSurvey { get; set; }
+        public DbSet<SiteSurvey> SiteSurvey { get; set; }
         
     }
 }

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Outlay>
+
+@{
+    ViewData["Title"] = "IndexOutlays";
+}
+
+<h6>Utlägg</h6>
+
+<p>
+    <h6>Antal Pengar förihelvete: @Model.Sum(o => o.Amount) SEK</h6>
+    <a class="btn btn-sm btn-outline-success" asp-action="CreateOutlay">Create New Outlay</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTimePosted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTimeChanged)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutlayDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutlayDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimePosted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeChanged)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OutlayDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OutlayDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                <a class="btn btn-sm btn-outline-success" asp-action="EditOutlay" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-sm btn-outline-success" asp-action="DetailsOutlay" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-sm btn-outline-danger" asp-action="DeleteOutlay" asp-route-id="@item.Id">Delete</a>                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

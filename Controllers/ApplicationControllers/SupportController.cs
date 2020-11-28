@@ -24,6 +24,11 @@ namespace NBS.Controllers.ApplicationControllers
             return View();
         }
 
+        public IActionResult SupportPortal()
+        {
+            return View();
+        }
+
         // GET: SupportRequests
         public async Task<IActionResult> ListSupportRequests()
         {
@@ -63,6 +68,37 @@ namespace NBS.Controllers.ApplicationControllers
             ViewData["RequestTypeId"] = new SelectList(_context.RequestTypes, "Id", "RequestTypeName");
             return View(supportRequest);
             
+        }
+
+        // GET: SupportRequests/Create
+        public IActionResult CreateSupportRequestPortal()
+        {
+            ViewData["RequestPrioId"] = new SelectList(_context.RequestPrios, "Id", "RequestPrioName");
+            ViewData["RequestStatusId"] = new SelectList(_context.RequestStatuses, "Id", "RequestStatusName");
+            ViewData["RequestTypeId"] = new SelectList(_context.RequestTypes, "Id", "RequestTypeName");
+            return View();
+        }
+
+        // POST: Bills/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateSupportRequestPortal([Bind("Id,ClientCompany,ClientContact,ClientEmail," +
+            "ClientPhoneNumber,ClientSite,SiteNumber,SiteName,SiteArea,RequestTypeId,RequestStatusId," +
+            "RequestPrioId,DateTimePosted,RequestDescription")] SupportRequest supportRequest)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(supportRequest);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(SupportPortal));
+            }
+            ViewData["RequestPrioId"] = new SelectList(_context.RequestPrios, "Id", "RequestPrioName");
+            ViewData["RequestStatusId"] = new SelectList(_context.RequestStatuses, "Id", "RequestStatusName");
+            ViewData["RequestTypeId"] = new SelectList(_context.RequestTypes, "Id", "RequestTypeName");
+            return View(supportRequest);
+
         }
 
 

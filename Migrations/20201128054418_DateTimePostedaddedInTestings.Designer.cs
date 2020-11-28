@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NBS.Data;
 
 namespace NBS.Migrations
 {
     [DbContext(typeof(NBSContext))]
-    partial class NBSContextModelSnapshot : ModelSnapshot
+    [Migration("20201128054418_DateTimePostedaddedInTestings")]
+    partial class DateTimePostedaddedInTestings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -975,38 +977,6 @@ namespace NBS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("OfferStatus");
-                });
-
-            modelBuilder.Entity("NBS.Models.DataModels.Outlay", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("DateTimeChanged")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateTimePosted")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("OutlayDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("OutlayDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.ToTable("Outlays");
                 });
 
             modelBuilder.Entity("NBS.Models.DataModels.Person", b =>
@@ -2222,14 +2192,6 @@ namespace NBS.Migrations
                     b.HasOne("NBS.Models.DataModels.Site", "Site")
                         .WithMany()
                         .HasForeignKey("SiteId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("NBS.Models.DataModels.Outlay", b =>
-                {
-                    b.HasOne("NBS.Models.DataModels.ApplicationUser", "Employee")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

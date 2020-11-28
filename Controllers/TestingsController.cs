@@ -54,7 +54,7 @@ namespace NBS.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description")] Testing testing)
+        public async Task<IActionResult> Create([Bind("Id,Description,DateTimePosted")] Testing testing)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace NBS.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description")] Testing testing)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,DateTimePosted")] Testing testing)
         {
             if (id != testing.Id)
             {

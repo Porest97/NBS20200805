@@ -1,0 +1,83 @@
+﻿@model SupportRequest
+
+@{
+    ViewData["Title"] = "CreateSupportRequestPortal";
+}
+
+
+<div class="card col-md-6">
+    <div class="card-body col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <form asp-action="CreateSupportRequestPortal">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="ClientCompany" class="control-label"></label>
+                        <input asp-for="ClientCompany" class="form-control" />
+                        <span asp-validation-for="ClientCompany" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientContact" class="control-label"></label>
+                        <input asp-for="ClientContact" class="form-control" />
+                        <span asp-validation-for="ClientContact" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientEmail" class="control-label"></label>
+                        <input asp-for="ClientEmail" class="form-control" />
+                        <span asp-validation-for="ClientEmail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientPhoneNumber " class="control-label"></label>
+                        <input asp-for="ClientPhoneNumber " class="form-control" />
+                        <span asp-validation-for="ClientPhoneNumber " class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClientSite" class="control-label"></label>
+                        <input asp-for="ClientSite" class="form-control" />
+                        <span asp-validation-for="ClientSite" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SiteNumber" class="control-label"></label>
+                        <input asp-for="SiteNumber" class="form-control" />
+                        <span asp-validation-for="SiteNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SiteName" class="control-label"></label>
+                        <input asp-for="SiteName" class="form-control" />
+                        <span asp-validation-for="SiteName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SiteArea" class="control-label"></label>
+                        <input asp-for="SiteArea" class="form-control" />
+                        <span asp-validation-for="SiteArea" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RequestTypeId" class="control-label"></label>
+                        <select asp-for="RequestTypeId" class="form-control" asp-items="ViewBag.RequestTypeId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RequestStatusId" class="control-label"></label>
+                        <select asp-for="RequestStatusId" class="form-control" asp-items="ViewBag.RequestStatusId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RequestPrioId" class="control-label"></label>
+                        <select asp-for="RequestPrioId" class="form-control" asp-items="ViewBag.RequestPrioId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DateTimePosted" class="control-label"></label>
+                        <input asp-for="DateTimePosted" class="form-control" />
+                        <span asp-validation-for="DateTimePosted" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RequestDescription" class="control-label"></label>
+                        <input asp-for="RequestDescription" class="form-control" />
+                        <span asp-validation-for="RequestDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Skapa" class="btn btn-sm btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+</div>

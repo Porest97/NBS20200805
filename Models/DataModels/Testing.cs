@@ -14,5 +14,12 @@ namespace NBS.Models.DataModels
         [Display(Name ="Beskrivning")]
         public string Description { get; set; }
 
+        [Display(Name = "Posted")]
+        public DateTime DateTimePosted { get; set; }
+        public Testing()
+        {
+            DateTimePosted = DateTime.Now;
+        }
+
     }
 }
