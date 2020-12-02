@@ -26,6 +26,13 @@ namespace NBS.Models.DataModels
         [ForeignKey("ApplicationUserId")]
         public ApplicationUser Employee { get; set; }
 
+        [Display(Name = "Status")]
+        public int StatusId { get; set; }
+        [Display(Name = "Status")]
+        [ForeignKey("StatusId")]
+        public Status Status { get; set; }
+
+
         public Outlay()
         {
             DateTimePosted = DateTime.Now;

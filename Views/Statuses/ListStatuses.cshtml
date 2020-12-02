@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Status>
+
+@{
+    ViewData["Title"] = "ListStatuses";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h6>Lista på alla statusar !</h6>
+        <a class="btn btn-sm btn-outline-success" asp-action="CreateStatus">Lägg till Status</a>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Action)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StatusName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StatusDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Action)
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-success" asp-action="EditStatus" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-sm btn-outline-success" asp-action="DetailsStatus" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-sm btn-outline-danger" asp-action="DeleteStatus" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

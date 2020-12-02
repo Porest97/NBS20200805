@@ -1,0 +1,42 @@
+﻿@model Outlay
+
+@{
+    ViewData["Title"] = "ChangeOutlayStatus";
+}
+<div class="card">
+    <div class="card-header">
+        <h6>Change Status !</h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="EditOutlay">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="DateTimePosted" />
+                    <div asp-for="DateTimeChanged" class="col-md-4 control-label text-hide">@Html.DisplayFor(Model => Model.DateTimeChanged)</div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="ApplicationUserId" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="OutlayDateTime" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="OutlayDescription" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Amount" />
+                    <div class="form-group">
+                        <label asp-for="StatusId" class="control-label"></label>
+                        <select asp-for="StatusId" class="form-control" asp-items="ViewBag.StatusId"></select>
+                        <span asp-validation-for="StatusId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-sm btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-sm btn-outline-success" asp-action="IndexOutlays">Back to List</a>
+    </div>
+</div>

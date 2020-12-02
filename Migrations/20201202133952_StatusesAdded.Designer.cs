@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NBS.Data;
 
 namespace NBS.Migrations
 {
     [DbContext(typeof(NBSContext))]
-    partial class NBSContextModelSnapshot : ModelSnapshot
+    [Migration("20201202133952_StatusesAdded")]
+    partial class StatusesAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1002,14 +1004,9 @@ namespace NBS.Migrations
                     b.Property<string>("OutlayDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StatusId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("StatusId");
 
                     b.ToTable("Outlays");
                 });
@@ -2257,12 +2254,6 @@ namespace NBS.Migrations
                         .WithMany()
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("NBS.Models.DataModels.Status", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("NBS.Models.DataModels.Person", b =>

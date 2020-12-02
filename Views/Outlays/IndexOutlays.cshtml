@@ -31,6 +31,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Amount)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -56,9 +59,13 @@
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Status.StatusName)
+            </td>
+            <td>
                 <a class="btn btn-sm btn-outline-success" asp-action="EditOutlay" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-sm btn-outline-danger" asp-action="ChangeOutlayStatus" asp-route-id="@item.Id">Status</a>
                 <a class="btn btn-sm btn-outline-success" asp-action="DetailsOutlay" asp-route-id="@item.Id">Details</a>
-                <a class="btn btn-sm btn-outline-danger" asp-action="DeleteOutlay" asp-route-id="@item.Id">Delete</a>                
+                <a class="btn btn-sm btn-outline-danger" asp-action="DeleteOutlay" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

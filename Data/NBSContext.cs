@@ -97,6 +97,7 @@ namespace NBS.Data
         }     
 
         public DbSet<Testing> Testing { get; set; }
+        public DbSet<Status> Statuses { get; set; }
 
         public DbSet<SiteSurvey> SiteSurvey { get; set; }
         
