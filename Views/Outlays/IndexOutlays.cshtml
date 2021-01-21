@@ -8,7 +8,8 @@
 
 <p>
     <h6>Antal Pengar : @Model.Sum(o => o.Amount) SEK</h6>
-    <a class="btn btn-sm btn-outline-success" asp-action="CreateOutlay">Create New Outlay</a>
+    <a class="btn btn-sm btn-outline-success" asp-controller="Outlays" asp-action="CreateOutlay">Registrera Utlägg !</a>
+    <a class="btn btn-sm btn-outline-success" asp-controller="Sallary" asp-action="IndexSearchSallaries">Till Löne ADM !</a>
 </p>
 <table class="table">
     <thead>
@@ -38,7 +39,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderByDescending(o=>o.OutlayDateTime)) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.DateTimePosted)

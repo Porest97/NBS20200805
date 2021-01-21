@@ -45,7 +45,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.OrderBy(t => t.TransactionDate))
+                @foreach (var item in Model.OrderByDescending(t => t.TransactionDate))
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.SallaryAccount.AccountName)</td>

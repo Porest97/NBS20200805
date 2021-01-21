@@ -79,7 +79,7 @@ namespace NBS.Models.DataModels
         [Display(Name = "FE Exits Site")]
         public DateTime? FEEExitsSite { get; set; }
 
-        [Display(Name = "Logg")]
+        [Display(Name = "Log")]
         public string Logg { get; set; }
 
         //Incident Resolution
