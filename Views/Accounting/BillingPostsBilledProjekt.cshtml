@@ -20,7 +20,7 @@
             <form asp-controller="Accounting" asp-action="BillingPostsBilledProjekt">
                 <div class="card-header">
                     INC#: <input type="text" name="SearchString5">
-                    Förnamn:<input type="text" name="SearchString">
+                    PO #:<input type="text" name="SearchString">
                     Efternamn:<input type="text" name="SearchString1">
                 </div>
                 <div class="card-header col-md-12 text-center">
@@ -50,6 +50,7 @@
                     <th>@Html.DisplayNameFor(model => model.Total)</th>
                     <th>@Html.DisplayNameFor(model => model.Notes)</th>
                     <th>@Html.DisplayNameFor(model => model.WLNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.PONumber)</th>
                     <th>@Html.DisplayNameFor(model => model.BPStatus)</th>
 
                     <th></th>
@@ -58,24 +59,25 @@
             <tbody>
                 @foreach (var item in Model.OrderBy(t => t.Ended).Where(t => t.BPStatusId == 8))
                 {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Employee.FirstName)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Customer)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Incident)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Started)</td>
-                        @*<td>@Html.DisplayFor(modelItem => item.Ended)</td>*@
-                        <td>@Html.DisplayFor(modelItem => item.Hours)</td>
-                        @*<td>@Html.DisplayFor(modelItem => item.Price)</td>*@
-                        <td>@Html.DisplayFor(modelItem => item.Outlay)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Total)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Notes)</td>
-                        <td>@Html.DisplayFor(modelItem => item.WLNumber)</td>
-                        <td>@Html.DisplayFor(modelItem => item.BPStatus.BPStatusName)</td>
-                        <td>
-                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPost" asp-route-id="@item.Id">Ändra Värden</a>
-                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPostStatus" asp-route-id="@item.Id">Ändra Status</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Employee.FirstName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Customer)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Incident)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Started)</td>
+                    @*<td>@Html.DisplayFor(modelItem => item.Ended)</td>*@
+                    <td>@Html.DisplayFor(modelItem => item.Hours)</td>
+                    @*<td>@Html.DisplayFor(modelItem => item.Price)</td>*@
+                    <td>@Html.DisplayFor(modelItem => item.Outlay)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Total)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Notes)</td>
+                    <td>@Html.DisplayFor(modelItem => item.WLNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PONumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.BPStatus.BPStatusName)</td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPost" asp-route-id="@item.Id">Ändra Värden</a>
+                        <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPostStatus" asp-route-id="@item.Id">Ändra Status</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

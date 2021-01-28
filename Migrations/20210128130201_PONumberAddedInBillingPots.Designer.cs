@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NBS.Data;
 
 namespace NBS.Migrations
 {
     [DbContext(typeof(NBSContext))]
-    partial class NBSContextModelSnapshot : ModelSnapshot
+    [Migration("20210128130201_PONumberAddedInBillingPots")]
+    partial class PONumberAddedInBillingPots
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

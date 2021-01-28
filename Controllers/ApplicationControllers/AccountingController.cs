@@ -396,7 +396,7 @@ namespace NBS.Controllers.ApplicationControllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateBillingPost([Bind("Id,Customer,Incident,Started,Ended,Hours,Price,Total,Outlay,PersonId,Notes,WLNumber,BPStatusId")] BillingPost billingPost)
+        public async Task<IActionResult> CreateBillingPost([Bind("Id,Customer,Incident,Started,Ended,Hours,Price,Total,Outlay,PersonId,Notes,WLNumber,BPStatusId,PONumber")] BillingPost billingPost)
         {
             if (ModelState.IsValid)
             {
@@ -430,7 +430,7 @@ namespace NBS.Controllers.ApplicationControllers
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
                 .Include(t => t.BPStatus).Where(t => t.BPStatusId < 3)
-                .Where(s => s.Employee.FirstName.Contains(searchString));
+                .Where(s => s.PONumber.Contains(searchString));
 
             }
             if (!String.IsNullOrEmpty(searchString1))
@@ -490,7 +490,7 @@ namespace NBS.Controllers.ApplicationControllers
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
                 .Include(t => t.BPStatus).Where(t => t.BPStatusId == 3)
-                .Where(s => s.Employee.FirstName.Contains(searchString));
+                .Where(s => s.PONumber.Contains(searchString));
 
             }
             if (!String.IsNullOrEmpty(searchString1))
@@ -551,7 +551,7 @@ namespace NBS.Controllers.ApplicationControllers
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
                 .Include(t => t.BPStatus).Where(t => t.BPStatusId == 7)
-                .Where(s => s.Employee.FirstName.Contains(searchString));
+                .Where(s => s.PONumber.Contains(searchString));
 
             }
             if (!String.IsNullOrEmpty(searchString1))
@@ -612,7 +612,7 @@ namespace NBS.Controllers.ApplicationControllers
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
                 .Include(t => t.BPStatus).Where(t => t.BPStatusId == 4)
-                .Where(s => s.Employee.FirstName.Contains(searchString));
+                .Where(s => s.PONumber.Contains(searchString));
 
             }
             if (!String.IsNullOrEmpty(searchString1))
@@ -673,7 +673,7 @@ namespace NBS.Controllers.ApplicationControllers
                 billingPosts = billingPosts
                 .Include(t => t.Employee)
                 .Include(t => t.BPStatus).Where(t => t.BPStatusId == 8)
-                .Where(s => s.Employee.FirstName.Contains(searchString));
+                .Where(s => s.PONumber.Contains(searchString));
 
             }
             if (!String.IsNullOrEmpty(searchString1))
@@ -743,7 +743,7 @@ namespace NBS.Controllers.ApplicationControllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditBillingPost(int id, [Bind("Id, Customer, Incident, Started, Ended, Hours, Price, Total, Outlay, PersonId, Notes, WLNumber, BPStatusId")] BillingPost billingPost)
+        public async Task<IActionResult> EditBillingPost(int id, [Bind("Id,Customer,Incident,Started,Ended,Hours,Price,Total,Outlay,PersonId,Notes,WLNumber,BPStatusId,PONumber")] BillingPost billingPost)
         {
             if (id != billingPost.Id)
             {
@@ -780,7 +780,7 @@ namespace NBS.Controllers.ApplicationControllers
             return View(billingPost);
         }
 
-        // GET: BillingPost/EditBillingPost
+        // GET: EditBillingPostReported
         public async Task<IActionResult> EditBillingPostReported(int? id)
         {
             if (id == null)
@@ -799,12 +799,12 @@ namespace NBS.Controllers.ApplicationControllers
             return View(billingPost);
         }
 
-        // POST: TimBanksPost/EditStatus        
+        // POST: EditBillingPostReported       
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditBillingPostReported(int id, [Bind("Id, Customer, Incident, Started, Ended, Hours, Price, Total, Outlay, PersonId, Notes, WLNumber, BPStatusId")] BillingPost billingPost)
+        public async Task<IActionResult> EditBillingPostReported(int id,[Bind("Id,Customer,Incident,Started,Ended,Hours,Price,Total,Outlay,PersonId,Notes,WLNumber,BPStatusId,PONumber")] BillingPost billingPost)
         {
             if (id != billingPost.Id)
             {
@@ -860,12 +860,12 @@ namespace NBS.Controllers.ApplicationControllers
             return View(billingPost);
         }
 
-        // POST: TimBanksPost/EditStatus        
+        // POST: EditBillingPostStatus        
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditBillingPostStatus(int id, [Bind("Id, Customer, Incident, Started, Ended, Hours, Price, Total, Outlay, PersonId, Notes, WLNumber, BPStatusId")] BillingPost billingPost)
+        public async Task<IActionResult> EditBillingPostStatus(int id, [Bind("Id,Customer,Incident,Started,Ended,Hours,Price,Total,Outlay,PersonId,Notes,WLNumber,BPStatusId,PONumber")] BillingPost billingPost)
         {
             if (id != billingPost.Id)
             {
@@ -921,12 +921,12 @@ namespace NBS.Controllers.ApplicationControllers
             return View(billingPost);
         }
 
-        // POST: TimBanksPost/EditStatus        
+        // POST: EditBillingPostStatusReported       
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditBillingPostStatusReported(int id, [Bind("Id, Customer, Incident, Started, Ended, Hours, Price, Total, Outlay, PersonId, Notes, WLNumber, BPStatusId")] BillingPost billingPost)
+        public async Task<IActionResult> EditBillingPostStatusReported(int id, [Bind("Id, Customer, Incident, Started, Ended, Hours, Price, Total, Outlay, PersonId, Notes, WLNumber, BPStatusId, PONumber")] BillingPost billingPost)
         {
             if (id != billingPost.Id)
             {

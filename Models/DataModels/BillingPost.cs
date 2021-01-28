@@ -48,11 +48,16 @@ namespace NBS.Models.DataModels
         [Display(Name = "WL#")]
         public string WLNumber { get; set; }
 
+        [Display(Name = "PO#")]
+        public string PONumber { get; set; }
+
         [Display(Name = "Status")]
         public int? BPStatusId { get; set; }
         [Display(Name = "Status")]
         [ForeignKey("BPStatusId")]
         public BPStatus BPStatus { get; set; }
+
+
 
     }
 
