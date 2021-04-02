@@ -780,6 +780,67 @@ namespace NBS.Controllers.ApplicationControllers
             return View(billingPost);
         }
 
+        // GET: BillingPost/EditBillingPostEmployee
+        public async Task<IActionResult> EditBillingPostEmployee(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var billingPost = await _context.BillingPost.FindAsync(id);
+            if (billingPost == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", billingPost.PersonId);
+            ViewData["BPStatusId"] = new SelectList(_context.BPStatus, "Id", "BPStatusName", billingPost.BPStatusId);
+            return View(billingPost);
+        }
+
+        // POST: TimBanksPost/EditStatus        
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditBillingPostEmployee(int id, [Bind("Id,Customer,Incident,Started,Ended,Hours,Price,Total,Outlay,PersonId,Notes,WLNumber,BPStatusId,PONumber")] BillingPost billingPost)
+        {
+            if (id != billingPost.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var nBSContext = _context.BillingPost
+                 .Include(t => t.BPStatus)
+                 .Include(t => t.Employee);
+                    billingPost.Total = (billingPost.Hours * billingPost.Price) + billingPost.Outlay;
+
+                    _context.Update(billingPost);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BillingPostExists(billingPost.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(IndexSearchBillingPosts));
+            }
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", billingPost.PersonId);
+            ViewData["BPStatusId"] = new SelectList(_context.BPStatus, "Id", "BPStatusName", billingPost.BPStatusId);
+            return View(billingPost);
+        }
+
         // GET: EditBillingPostReported
         public async Task<IActionResult> EditBillingPostReported(int? id)
         {

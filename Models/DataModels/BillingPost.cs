@@ -36,7 +36,7 @@ namespace NBS.Models.DataModels
         [Display(Name = "Utlägg")]
         public decimal Outlay { get; set; }
 
-        [Display(Name = "Ansälld")]
+        [Display(Name = "Anställd")]
         public int? PersonId { get; set; }
         [Display(Name = "Anställd")]
         [ForeignKey("PersonId")]
