@@ -1,0 +1,52 @@
+﻿@model BillingPost
+
+@{
+    ViewData["Title"] = "EditBillingPostEmployee";
+}
+
+<div class="card col-md-6 text-center">
+    <div class="card-body text-center col-md-12">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <form asp-action="EditBillingPost" class="col-md-12 text-center">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Customer" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Incident" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="PONumber" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Started" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Ended" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Hours" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Price" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Outlay" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Total" />
+                    <div class="form-group">
+                        <label asp-for="PersonId" class="control-label"></label>
+                        <select asp-for="PersonId" class="form-control" asp-items="ViewBag.PersonId"></select>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Notes" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="WLNumber" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="BPStatusId" />                   
+                    <div class="form-group">
+                        <input type="submit" value="Spara" class="btn btn-sm btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer col-md-12">
+        <a class="btn btn-sm btn-success" asp-controller="Accounting" asp-action="IndexSearchBillingPosts">Till Fakturaposter</a>
+    </div>
+</div>

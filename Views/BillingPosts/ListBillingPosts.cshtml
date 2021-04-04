@@ -1,25 +1,25 @@
 ﻿@model IEnumerable<BillingPost>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ListBillingPosts";
 }
-<div class="card card-columns col-md-12 text-center">
-    <div class="card-header col-md-12 text-center">
+<div class="text-center">
+    <div class="card-header text-center">
         <div>
             <h6>Fakturerings poster schemalagda och avslutade !</h6>
             <h6>Totala Timmar: @Model.Sum(t => t.Hours)</h6>
             <h6>Totalt Belopp: @Model.Sum(t => t.Total)</h6>
         </div>
         <div style="padding-bottom: 1em;">
-            <a class="btn btn-sm btn-outline-success" asp-action="CreateBillingPost" asp-controller="Accounting">Registrera ny Faktureringpost</a>
-            <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchBillingPostsReported" asp-controller="Accounting">Faktureringsposter Rapporterade (Reporter)</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="CreateBillingPost" asp-controller="BillingPosts">Registrera ny Faktureringpost</a>
+            @*<a class="btn btn-sm btn-outline-success" asp-action="IndexSearchBillingPostsReported" asp-controller="Accounting">Faktureringsposter Rapporterade (Reporter)</a>
             <a class="btn btn-sm btn-outline-success" asp-action="IndexSearchBillingPostsBilled" asp-controller="Accounting">Till Faktureringsposter Fakturerade (Billed)</a>
             <a class="btn btn-sm btn-outline-success" asp-action="BillingPostsReportedProjekt" asp-controller="Accounting">Faktureringsposter Rapporterade för projekt (Reporter)</a>
             <a class="btn btn-sm btn-outline-success" asp-action="BillingPostsBilledProjekt" asp-controller="Accounting">Till Faktureringsposter Fakturerade för projekt (Billed)</a>
-            <a class="btn btn-sm btn-outline-success" asp-action="Billing" asp-controller="Home">Till Faktureringen</a>
+            <a class="btn btn-sm btn-outline-success" asp-action="Billing" asp-controller="Home">Till Faktureringen</a>*@
         </div>
-        <div class="card-header col-md-12 text-center">
-            <form asp-controller="Accounting" asp-action="IndexSearchBillingPosts">
+        <div class="card-header text-center">
+            <form asp-controller="BillingPosts" asp-action="ListBillingPosts">
                 <div class="card-header">
                     Kund: <input type="text" name="SearchString5">
                     PO #:<input type="text" name="SearchString">
@@ -28,7 +28,7 @@
                 <div class="card-header col-md-12 text-center">
                     INC#: <input type="text" name="SearchString2">
                     Avslutad: <input type="text" name="SearchString3">
-                    Status: <input type="text" name="SearchString4" value="Scheduled">
+                    Status: <input type="text" name="SearchString4">
                 </div>
                 <div class="card-header col-md-12 text-center">
                     <input type="submit" value="Search" />
@@ -37,8 +37,8 @@
             </form>
         </div>
     </div>
-    <div class="card-body col-md-12 text-center">
-        <table class="table table-responsive-sm table-striped">
+    <div class="card-body text-center">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Employee)</th>
@@ -76,9 +76,10 @@
                         <td>@Html.DisplayFor(modelItem => item.PONumber)</td>
                         <td>@Html.DisplayFor(modelItem => item.BPStatus.BPStatusName)</td>
                         <td>
-                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPost" asp-route-id="@item.Id">Ändra Värden</a>
-                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPostStatus" asp-route-id="@item.Id">Ändra Status</a>
-                            <a class="btn btn-sm btn-outline-success" asp-controller="Accounting" asp-action="EditBillingPostEmployee" asp-route-id="@item.Id">Ändra Anställd</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="BillingPosts" asp-action="DetailsBillingPost" asp-route-id="@item.Id">Detaljer</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="BillingPosts" asp-action="EditBillingPost" asp-route-id="@item.Id">Ändra Värden</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="BillingPosts" asp-action="EditBillingPostStatus" asp-route-id="@item.Id">Ändra Status</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="BillingPosts" asp-action="EditBillingPostEmployee" asp-route-id="@item.Id">Ändra Anställd</a>
                         </td>
                     </tr>
                 }
@@ -86,6 +87,6 @@
         </table>
     </div>
     <div class="card-footer col-md-12">
-        <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Billing">Till Faktureringen</a>
+        <a class="btn btn-sm btn-success" asp-controller="BillingPosts" asp-action="ListBillingPosts">Till Faktureringsposterna</a>
     </div>
 </div>
