@@ -1,132 +1,97 @@
 ﻿@model Incident
-
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="card">
+    <div class="card-header">
+        <h6> Incident: @Html.DisplayFor(model => model.IncidentNumber)</h6>
+    </div>
+    <div class="card-body">
 
-<div>
-    <h6> Incident: @Html.DisplayFor(model => model.IncidentNumber)</h6>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IncidentPriority)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IncidentPriority.IncidentPriorityName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IncidentStatus)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IncidentStatus.IncidentStatusName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IncidentType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IncidentType.IncidentTypeName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IncidentNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IncidentNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Created)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Creator)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Creator.FullName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Site)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Site.NoSite)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Received)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Received)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Receiver)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Receiver.FullName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FEScheduled)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FEScheduled)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FEAssigned)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FEAssigned.FullName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FEEntersSite)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FEEntersSite)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FEEExitsSite)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FEEExitsSite)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Logg)
-        </dt>
-        <dd class="col-sm-10 align-items-sm-center">
-            @Html.DisplayFor(model => model.Logg)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IssueResolved)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IssueResolved)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Resolution)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Resolution)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PurchaseOrder)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PurchaseOrder.PONumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PurchaseOrder.POHours)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PurchaseOrder.POHours)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <dl class="row">
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.IncidentPriority)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.IncidentPriority.IncidentPriorityName)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.IncidentStatus)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.IncidentStatus.IncidentStatusName)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.IncidentType)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.IncidentType.IncidentTypeName)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.IncidentNumber)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.IncidentNumber)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Created)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Created)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Creator)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Creator.FullName)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Site)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Site.NoSite)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Received)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Received)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Receiver)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Receiver.FullName)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.FEScheduled)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.FEScheduled)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.FEAssigned)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.FEAssigned.FullName)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Description)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.FEEntersSite)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.FEEntersSite)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.FEEExitsSite)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.FEEExitsSite)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Logg)</dt>
+            <dd class="col-sm-10 align-items-sm-center">@Html.DisplayFor(model => model.Logg)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.IssueResolved)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.IssueResolved)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Resolution)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Resolution)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.PurchaseOrder)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.PurchaseOrder.PONumber)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.PurchaseOrder.POHours)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.PurchaseOrder.POHours)</dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <dl class="row alert-success">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MtrlList)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Description)
+            </dd>
+        </dl>
+        <dl class="alert-success">
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item1)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item2)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item3)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item4)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item5)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item6)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item7)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item8)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item9)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrlList.Item10)
+            </dd>
+        </dl>
+    </div>
     <a class="btn btn-sm btn-success" asp-controller="Incidents" asp-action="IndexSearch">Back to Incidents</a>
+        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
 </div>

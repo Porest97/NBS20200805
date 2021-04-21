@@ -18,7 +18,7 @@
                     @Html.DisplayNameFor(model => model.IncidentNumber): <input type="text" name="SearchString">
                     Site @Html.DisplayNameFor(model => model.Site.SiteNumber): <input type="text" name="SearchString1">
                     @Html.DisplayNameFor(model => model.Description): <input type="text" name="SearchString2">
-                    @Html.DisplayNameFor(model => model.IncidentStatus.IncidentStatusName): <input type="text" name="SearchString3" value="Scheduled">
+                    @Html.DisplayNameFor(model => model.IncidentStatus.IncidentStatusName): <input type="text" name="SearchString3">
                     <input type="submit" value="Search" />
                 </p>
             </form>
@@ -72,7 +72,8 @@
 
 
                         <td>
-                            <a class="btn btn-sm btn-outline-success" asp-controller="Incidents" asp-action="DetailsPrint" asp-route-id="@item.Id">Details</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Incidents" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Incidents" asp-action="DetailsPrint" asp-route-id="@item.Id">Details prnt</a>
                         </td>
                     </tr>
                     }
