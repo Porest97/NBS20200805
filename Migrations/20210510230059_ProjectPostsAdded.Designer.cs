@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NBS.Data;
 
 namespace NBS.Migrations
 {
     [DbContext(typeof(NBSContext))]
-    partial class NBSContextModelSnapshot : ModelSnapshot
+    [Migration("20210510230059_ProjectPostsAdded")]
+    partial class ProjectPostsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1217,9 +1219,6 @@ namespace NBS.Migrations
 
                     b.Property<int>("ProjectPostStatusId")
                         .HasColumnType("int");
-
-                    b.Property<string>("ShiftDescription")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("TimeActual")
                         .HasColumnType("decimal(18,2)");

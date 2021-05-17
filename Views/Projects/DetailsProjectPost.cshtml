@@ -1,0 +1,108 @@
+﻿@model ProjectPost
+
+@{
+    ViewData["Title"] = "DetailsProjectPost";
+}
+<div class="card">
+    <div class="card-header">
+        <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="ListProjectPosts">Till Projektposterna !</a>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateTimePosted)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateTimePosted)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateTimeChanged)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateTimeChanged)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ProjectPostDescription)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ProjectPostDescription)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ShiftDescription)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ShiftDescription)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateTimePlaned)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateTimePlaned)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateTimeStarted)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateTimeStarted)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateTimeDone)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateTimeDone)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HourPrice)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HourPrice)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TimeEstimate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TimeEstimate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TotalCostEstimate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TotalCostEstimate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TimeActual)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TimeActual)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MtrCostActual)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MtrCostActual)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LabourCostActual)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LabourCostActual)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TotalCostActual)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TotalCostActual)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Status.ProjectPostStatusName)
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="card-footer">
+    <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="ListProjectPosts">Till Projektposterna !</a>
+    <a class="btn btn-sm btn-outline-success" asp-controller="Home" asp-action="Projects">Till Projekten !</a>
+</div>

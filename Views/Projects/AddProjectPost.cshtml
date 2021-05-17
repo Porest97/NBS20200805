@@ -1,0 +1,90 @@
+﻿@model ProjectPost
+
+@{
+    ViewData["Title"] = "AddProjectPost";
+}
+<div class="card text-center" style="width: 50%;">
+    <div class="card-header">
+        <div class="card-header">
+            <h6>Registrera en ny projektpost ?</h6>
+        </div>
+            <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="ListProjectPosts">Till Projektposterna !</a>
+            <a class="btn btn-sm btn-outline-success" asp-controller="Home" asp-action="Projects">Till Projekten !</a>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form asp-action="AddProjectPost">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div asp-for="DateTimePosted" class="col-md-4 control-label text-hide">@Html.DisplayFor(Model => Model.DateTimePosted)</div>
+                        <div asp-for="DateTimeChanged" class="col-md-4 control-label text-hide">@Html.DisplayFor(Model => Model.DateTimeChanged)</div>
+                        <div class="form-group">
+                            <label asp-for="ProjectPostDescription" class="control-label"></label>
+                            <input asp-for="ProjectPostDescription" class="form-control" />
+                            <span asp-validation-for="ProjectPostDescription" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DateTimePlaned" class="control-label"></label>
+                            <input asp-for="DateTimePlaned" class="form-control" />
+                            <span asp-validation-for="DateTimePlaned" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DateTimeStarted" class="control-label"></label>
+                            <input asp-for="DateTimeStarted" class="form-control" />
+                            <span asp-validation-for="DateTimeStarted" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DateTimeDone" class="control-label"></label>
+                            <input asp-for="DateTimeDone" class="form-control" />
+                            <span asp-validation-for="DateTimeDone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="HourPrice" class="control-label"></label>
+                            <input asp-for="HourPrice" class="form-control" value="0" />
+                            <span asp-validation-for="HourPrice" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TimeEstimate" class="control-label"></label>
+                            <input asp-for="TimeEstimate" class="form-control" value="0" />
+                            <span asp-validation-for="TimeEstimate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TotalCostEstimate" class="control-label"></label>
+                            <input asp-for="TotalCostEstimate" class="form-control" value="0" />
+                            <span asp-validation-for="TotalCostEstimate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TimeActual" class="control-label"></label>
+                            <input asp-for="TimeActual" class="form-control" value="0" />
+                            <span asp-validation-for="TimeActual" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MtrCostActual" class="control-label"></label>
+                            <input asp-for="MtrCostActual" class="form-control" value="0" />
+                            <span asp-validation-for="MtrCostActual" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LabourCostActual" class="control-label"></label>
+                            <input asp-for="LabourCostActual" class="form-control" value="0" />
+                            <span asp-validation-for="LabourCostActual" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TotalCostActual" class="control-label"></label>
+                            <input asp-for="TotalCostActual" class="form-control" value="0" />
+                            <span asp-validation-for="TotalCostActual" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ProjectPostStatusId" class="control-label"></label>
+                            <select asp-for="ProjectPostStatusId" class="form-control" asp-items="ViewBag.ProjectPostStatusId"></select>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-sm btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="ListProjectPosts">Till Projektposterna !</a>
+        </div>
+    </div>

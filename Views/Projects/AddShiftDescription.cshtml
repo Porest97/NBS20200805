@@ -1,0 +1,62 @@
+﻿@model ProjectPost
+
+@{
+    ViewData["Title"] = "AddProjectPost";
+}
+<div class="card text-center" style="width: 50%;">
+    <div class="card-header">
+        <div class="card-header">
+            <h6>Vill du lägga till en Shift beskrivning för @Html.DisplayFor(model => model.ProjectPostDescription) ?</h6>
+        </div>
+        <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="ListProjectPosts">Till Projektposterna !</a>
+        <a class="btn btn-sm btn-outline-success" asp-controller="Home" asp-action="Projects">Till Projekten !</a>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="AddShiftDescription">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="DateTimePosted" />
+                    <div asp-for="DateTimeChanged" class="col-md-4 control-label text-hide">@Html.DisplayFor(Model => Model.DateTimeChanged)</div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="ProjectPostDescription" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="DateTimePlaned" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="DateTimeStarted" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="DateTimeDone" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="HourPrice" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="TimeEstimate" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="TotalCostEstimate" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="TimeActual" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="MtrCostActual" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="LabourCostActual" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="TotalCostActual" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="ProjectPostStatusId" />
+                    <div class="form-group">
+                        <label asp-for="ShiftDescription" class="control-label"></label>
+                        <input asp-for="ShiftDescription" class="form-control" />
+                        <span asp-validation-for="ShiftDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Lägg till" class="btn btn-sm btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="ListProjectPosts">Till Projektposterna !</a>
+    </div>
+</div>

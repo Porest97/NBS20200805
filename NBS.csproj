@@ -41,6 +41,11 @@
     <None Include="Views\Image\Details.cshtml" />
     <None Include="Views\Image\Edit.cshtml" />
     <None Include="Views\Image\Index.cshtml" />
+    <None Include="Views\Projects\AddProjectPost.cshtml" />
+    <None Include="Views\Projects\DeleteProjectPost.cshtml" />
+    <None Include="Views\Projects\DetailsProjectPost.cshtml" />
+    <None Include="Views\Projects\EditProjectPost.cshtml" />
+    <None Include="Views\Projects\ListProjectPosts.cshtml" />
   </ItemGroup>
 
 </Project>

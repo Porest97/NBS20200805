@@ -38,6 +38,11 @@ namespace NBS.Controllers.AdministrationControllers
             return View();
         }
 
+        public IActionResult Projects()
+        {
+            return View();
+        }
+
         public IActionResult Reports()
         {
             return View();

@@ -37,6 +37,10 @@ namespace NBS.Data
         public DbSet<PersonType> PersonType { get; set; }
 
         public DbSet<Plan> Plan { get; set; }
+        
+
+        public DbSet<ProjectPost> ProjectPosts { get; set; }
+        public DbSet<ProjectPost> ProjectPostStatus { get; set; }
 
         public DbSet<PurchaseOrder> PurchaseOrder { get; set; }
         public DbSet<Site> Site { get; set; }

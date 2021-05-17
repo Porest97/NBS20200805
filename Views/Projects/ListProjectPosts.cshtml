@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProjectPost>
+
+@{
+    ViewData["Title"] = "ListProjectPosts";
+}
+
+<div class="card text-center">
+    <div class="card-header">
+        <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="AddProjectPost">Registrera ny post</a>
+        <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="ListProjects">Lista projekt</a>
+
+        <h6>Estimerade timmar: @Model.Sum(p => p.TimeEstimate)</h6>
+        <h6>Utförda timmar: @Model.Sum(p => p.TimeActual)</h6>
+
+    </div>
+    
+    <table class="table table-bordered table-striped col-md-12">
+        <thead>
+            <tr>
+                @*<th>@Html.DisplayNameFor(model => model.DateTimePosted)</th>
+                <th>@Html.DisplayNameFor(model => model.DateTimeChanged)</th>
+                <th>@Html.DisplayNameFor(model => model.DateTimeStarted)</th>
+                <th>@Html.DisplayNameFor(model => model.DateTimeDone)</th>
+                <th>@Html.DisplayNameFor(model => model.HourPrice)</th>
+                <th>@Html.DisplayNameFor(model => model.TotalCostEstimate)</th>
+                <th>@Html.DisplayNameFor(model => model.TimeActual)</th>
+                <th>@Html.DisplayNameFor(model => model.MtrCostActual)</th>
+                <th>@Html.DisplayNameFor(model => model.LabourCostActual)</th>
+                <th>@Html.DisplayNameFor(model => model.TotalCostActual)</th>*@
+
+                <th>@Html.DisplayNameFor(model => model.DateTimePlaned)</th>
+                <th>@Html.DisplayNameFor(model => model.ProjectPostDescription)</th>
+                <th>@Html.DisplayNameFor(model => model.ShiftDescription)</th>
+                <th>@Html.DisplayNameFor(model => model.TimeEstimate)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderBy(p => p.DateTimePlaned).Where(p => p.ProjectPostStatusId < 4))
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.DateTimePlaned)</td>
+                <td>@Html.DisplayFor(modelItem => item.ProjectPostDescription)</td>
+                <td>@Html.DisplayFor(modelItem => item.ShiftDescription)</td>
+                <td>@Html.DisplayFor(modelItem => item.TimeEstimate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Status.ProjectPostStatusName)</td>
+
+                @*<td>@Html.DisplayFor(modelItem => item.DateTimePosted)</td>
+                <td>@Html.DisplayFor(modelItem => item.DateTimeChanged)</td>
+                <td>@Html.DisplayFor(modelItem => item.DateTimeStarted)</td>
+                <td>@Html.DisplayFor(modelItem => item.DateTimeDone)</td>
+                <td>@Html.DisplayFor(modelItem => item.HourPrice)</td>
+                <td>@Html.DisplayFor(modelItem => item.TotalCostEstimate)</td>
+                <td>@Html.DisplayFor(modelItem => item.TimeActual)</td>
+                <td>@Html.DisplayFor(modelItem => item.MtrCostActual)</td>
+                <td>@Html.DisplayFor(modelItem => item.LabourCostActual)</td>
+                <td>@Html.DisplayFor(modelItem => item.TotalCostActual)</td>*@
+
+
+                <td>
+                    <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="EditProjectPost" asp-route-id="@item.Id">Ändra</a>
+                    <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="DetailsProjectPost" asp-route-id="@item.Id">Info</a>
+                    <a class="btn btn-sm btn-outline-danger" asp-controller="Projects" asp-action="DeleteProjectPost" asp-route-id="@item.Id">Ta bort!</a>
+                    <a class="btn btn-sm btn-outline-success" asp-controller="Projects" asp-action="AddShiftDescription" asp-route-id="@item.Id">Ändra Shift beskrivningen</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+
+<div class="card-footer">
+    <a class="btn btn-sm btn-outline-success" asp-controller="Home" asp-action="Projects">Till Projekten !</a>
+</div>
